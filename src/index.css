@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────────── */
+:root {
+  --green:        #10b981;
+  --green-glow:   rgba(16, 185, 129, 0.25);
+  --green-dim:    rgba(16, 185, 129, 0.08);
+  --white-glass:  rgba(255, 255, 255, 0.04);
+  --border-glass: rgba(255, 255, 255, 0.06);
+  --bg-base:      #050505;
+  --bg-card:      rgba(8, 8, 8, 0.72);
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-base);
+  color: #fff;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────────────────  */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.3); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+/* ─── Aurora Animation Keyframes ─────────────────────────────────────────────── */
+@keyframes auroraFloat1 {
+  0%,  100% { transform: translate(0, 0) scale(1);             opacity: 0.55; }
+  25%        { transform: translate(4%, 7%)   scale(1.09);     opacity: 0.7;  }
+  50%        { transform: translate(7%, 2%)   scale(1.04);     opacity: 0.5;  }
+  75%        { transform: translate(2%, 9%)   scale(1.12);     opacity: 0.65; }
+}
+@keyframes auroraFloat2 {
+  0%,  100% { transform: translate(0, 0) scale(1);             opacity: 0.45; }
+  33%        { transform: translate(-6%, -5%) scale(1.07);     opacity: 0.6;  }
+  66%        { transform: translate(3%, -4%)  scale(1.03);     opacity: 0.4;  }
+}
+@keyframes auroraFloat3 {
+  0%,  100% { transform: translate(0, 0) scale(1);             opacity: 0.35; }
+  50%        { transform: translate(5%, -6%)  scale(1.08);     opacity: 0.5;  }
+}
+
+/* ─── Sphere & Particle Animations ───────────────────────────────────────────── */
+@keyframes sphereBreath {
+  0%,  100% { opacity: 0.28; transform: scale(1);    filter: blur(60px); }
+  50%        { opacity: 0.55; transform: scale(1.06); filter: blur(80px); }
+}
+@keyframes floatIdle {
+  0%,  100% { transform: translateY(0px) rotate(0deg); }
+  33%        { transform: translateY(-5px)  rotate(0.4deg); }
+  66%        { transform: translateY(-2.5px)  rotate(-0.2deg); }
+}
+@keyframes widgetFloat {
+  0%,  100% { transform: translateY(0px); }
+  50%        { transform: translateY(-5px); }
+}
+@keyframes particleDrift {
+  0%        { transform: translate(0, 0) scale(1);    opacity: 0; }
+  10%        { opacity: 1; }
+  90%        { opacity: 1; }
+  100%       { transform: translate(var(--tx, 20px), var(--ty, -40px)) scale(0.5); opacity: 0; }
+}
+
+/* ─── Neural Connections ─────────────────────────────────────────────────────── */
+@keyframes neuralFlow {
+  0%        { stroke-dashoffset: 300; opacity: 0; }
+  15%        { opacity: 0.55; }
+  60%        { stroke-dashoffset: 0;   opacity: 0.55; }
+  85%        { opacity: 0; }
+  100%       { stroke-dashoffset: -300; opacity: 0; }
+}
+@keyframes neuralPulse {
+  0%, 100%   { r: 3;  opacity: 0.9; }
+  50%         { r: 5;  opacity: 0.3; }
+}
+
+/* ─── Light Rays ──────────────────────────────────────────────────────────────── */
+@keyframes lightRaySweep {
+  0%   { opacity: 0; transform: translateX(-120%) skewX(-20deg); }
+  30%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(220%) skewX(-20deg); }
+}
+
+/* ─── Button animations ───────────────────────────────────────────────────────── */
+@keyframes rippleOut {
+  0%   { transform: scale(0);  opacity: 0.6; }
+  100% { transform: scale(4);  opacity: 0;   }
+}
+@keyframes shimmerSweep {
+  from { left: -100%; }
+  to   { left: 220%; }
+}
+@keyframes gradientBorderSpin {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Glassmorphism Tokens ────────────────────────────────────────────────────── */
+
+.glass-panel {
+  background: rgba(8, 8, 8, 0.62);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.glass-ultra {
+  background: rgba(255, 255, 255, 0.022);
+  backdrop-filter: blur(40px) saturate(1.6);
+  -webkit-backdrop-filter: blur(40px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.058);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-widget {
+  background: rgba(6, 8, 6, 0.82);
+  backdrop-filter: blur(32px) saturate(1.8);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel-emerald {
+  background: rgba(16, 185, 129, 0.015);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(16, 185, 129, 0.08);
+}
+
+.glass-panel-red {
+  background: rgba(239, 68, 68, 0.025);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(239, 68, 68, 0.10);
+}
+
+.glass-panel-teal {
+  background: rgba(13, 148, 136, 0.015);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(13, 148, 136, 0.12);
+}
+
+.gradient-border-card {
+  position: relative;
+  background: rgba(6, 12, 8, 0.92);
+  border-radius: 1.25rem;
+  isolation: isolate;
+}
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 1.35rem;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 40%, #10b981 70%, #0d9488 100%);
+  background-size: 300% 300%;
+  animation: gradientBorderSpin 4s ease infinite;
+  z-index: -1;
+}
+
+/* ─── Shimmer Button ──────────────────────────────────────────────────────────── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+  transform: skewX(-20deg);
+  left: -100%;
+  pointer-events: none;
+}
+.btn-shimmer:hover::after {
+  animation: shimmerSweep 1.4s ease-in-out infinite;
+}
+
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.btn-magnetic .ripple {
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  pointer-events: none;
+  animation: rippleOut 0.6s ease-out forwards;
+}
+
+/* ─── Nav link underline & dot ──────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #10b981;
+  transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+.active-nav-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ─── 3D Utilities ────────────────────────────────────────────────────────────── */
+.preserve-3d      { transform-style: preserve-3d; }
+.perspective-800  { perspective: 800px; }
+.perspective-1200 { perspective: 1200px; }
+.backface-hidden  { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+
+/* ─── Texture Overlays ────────────────────────────────────────────────────────── */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+.grid-lines {
+  background-size: 80px 80px;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.008) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.008) 1px, transparent 1px);
+}
+
+/* ─── Light ray strip ────────────────────────────────────────────────────────── */
+.light-ray {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(16,185,129,0.04), transparent);
+  animation: lightRaySweep 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.light-ray:nth-child(2) { animation-delay: -6s;  animation-duration: 22s; }
+.light-ray:nth-child(3) { animation-delay: -12s; animation-duration: 26s; }
+
+/* ─── Card float idle ────────────────────────────────────────────────────────── */
+.float-idle { animation: floatIdle 6s ease-in-out infinite; }
+.float-idle-2 { animation: floatIdle 8s ease-in-out infinite; animation-delay: -3s; }
+.float-idle-3 { animation: floatIdle 7s ease-in-out infinite; animation-delay: -5s; }
+
+/* ─── Section Dividers & Blending ────────────────────────────────────────────── */
+.section-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05) 50%, transparent);
+}
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+}
+
+/* ─── Interactive Before/After Slider ───────────────────────────────────────── */
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.slider-before, .slider-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+.slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #10b981;
+  cursor: ew-resize;
+  z-index: 30;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.9);
+}
+.slider-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 3px solid #050505;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.8);
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* ─── Custom Cursor (fine pointers only) ─────────────────────────────────────── */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, [role="button"], input, select, textarea, .cursor-pointer { cursor: none !important; }
+}
+
+.cursor-follower {
+  position: fixed;
+  top: 0; left: 0;
+  width: 28px; height: 28px;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width .22s cubic-bezier(.25,1,.5,1), height .22s cubic-bezier(.25,1,.5,1),
+              border-color .2s ease, background-color .2s ease;
+  will-change: transform;
+}
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 4px; height: 4px;
+  background: #10b981;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.cursor-follower.hovering {
+  width: 44px; height: 44px;
+  border-color: rgba(16, 185, 129, 0.9);
+  background: rgba(16, 185, 129, 0.05);
+}
