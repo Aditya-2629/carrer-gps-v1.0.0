@@ -75,21 +75,19 @@ button { border: 0; color: inherit; font: inherit; }
 .trust-grid span { display: flex; align-items: center; gap: 0.55rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(247, 240, 229, 0.045); padding: 0.72rem 0.85rem; color: #d8d0c4; font-size: 0.9rem; }
 .trust-grid svg { color: var(--accent); flex: 0 0 auto; }
 
-.gps-board { position: relative; border: 1px solid var(--line); border-radius: 2.2rem; background: var(--panel); padding: 1rem; box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38); }
-.board-top { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); padding: 0.7rem 0.8rem 1rem; color: var(--muted); font-size: 0.74rem; font-weight: 900; letter-spacing: 0.13em; text-transform: uppercase; }
-.board-top strong { color: var(--accent); }
-.radar-map { position: relative; display: grid; min-height: 320px; place-items: center; overflow: hidden; border-radius: 1.5rem; background: #100f0c; }
-.radar-map svg { width: min(100%, 560px); overflow: visible; }
-.map-road { fill: none; stroke: rgba(247, 240, 229, 0.14); stroke-width: 4; stroke-linecap: round; }
-.gps-route-path { stroke: var(--accent); stroke-dasharray: 820; stroke-dashoffset: 820; }
-.radar-map circle { fill: var(--accent); }
-.scan-dot { position: absolute; width: 0.82rem; height: 0.82rem; border-radius: 999px; background: var(--ink); offset-path: path('M42 245 C120 158 122 78 203 102 C285 126 260 220 378 76'); box-shadow: 0 0 26px rgba(155, 231, 194, 0.9); }
-.float-chip { position: absolute; display: inline-flex; align-items: center; gap: 0.45rem; border: 1px solid rgba(155, 231, 194, 0.28); border-radius: 999px; background: #191711; padding: 0.65rem 0.8rem; color: #dff8eb; font-size: 0.78rem; font-weight: 900; }
-.chip-one { left: 6%; top: 16%; } .chip-two { right: 5%; top: 43%; } .chip-three { left: 18%; bottom: 10%; }
-.diagnosis-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; margin-top: 0.8rem; }
+.hero-visual-wrap { position: relative; display: grid; gap: 0.9rem; }
+.gps-board { position: relative; border: 1px solid var(--line); border-radius: 2.2rem; background: var(--panel); padding: 0.75rem; box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38); }
+.hero-asset { display: block; width: 100%; height: auto; border-radius: 1.65rem; }
+.hero-card { position: absolute; display: inline-flex; align-items: center; gap: 0.55rem; border: 1px solid rgba(155, 231, 194, 0.28); border-radius: 1.1rem; background: #191711; padding: 0.72rem 0.85rem; color: #dff8eb; font-size: 0.78rem; font-weight: 900; box-shadow: 0 18px 52px rgba(0, 0, 0, 0.28); }
+.hero-card-score { left: -0.8rem; top: 19%; display: grid; gap: 0.05rem; min-width: 8rem; }
+.hero-card-score span { color: var(--accent); font-size: 2.4rem; font-weight: 1000; letter-spacing: -0.08em; line-height: 0.95; }
+.hero-card-score strong { color: #d8d0c4; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.11em; }
+.hero-card-report { right: -0.9rem; top: 42%; }
+.hero-card-stack { left: 12%; bottom: 9%; }
+.diagnosis-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.7rem; }
 .diagnosis-grid div { border: 1px solid var(--line); border-radius: 1rem; background: var(--panel-2); padding: 0.9rem; }
 .diagnosis-grid span { display: block; color: var(--accent); font-size: 0.72rem; font-weight: 950; }
-.diagnosis-grid strong { display: block; margin-top: 0.25rem; font-size: 0.92rem; }
+.diagnosis-grid strong { display: block; margin-top: 0.25rem; font-size: 0.86rem; }
 
 .section-head { max-width: 1120px; margin: 0 auto 3rem; }
 .section-title { margin: 0; max-width: 1050px; font-size: clamp(2.45rem, 6vw, 5.8rem); font-weight: 1000; letter-spacing: -0.075em; line-height: 0.92; text-wrap: balance; }
@@ -168,8 +166,9 @@ footer { border-top: 1px solid var(--line); padding: 2rem 1rem; color: var(--mut
   .hero-copy h1 { font-size: clamp(3.1rem, 16vw, 4.9rem); }
   .cta, .cta-row { width: 100%; }
   .diagnosis-grid, .pain-grid, .feature-grid { grid-template-columns: 1fr; }
-  .radar-map { min-height: 285px; }
-  .float-chip { font-size: 0.7rem; }
+  .hero-card { position: static; width: 100%; justify-content: center; font-size: 0.74rem; }
+  .hero-card-score { display: flex; min-width: 0; }
+  .hero-card-score span { font-size: 1.8rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

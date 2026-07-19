@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import heroAsset from './assets/career-gps-hero.svg';
 import {
   ArrowRight,
   BadgeCheck,
@@ -132,7 +133,7 @@ export default function App() {
       gsap.from('.hero-pop', { y: 22, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.09, delay: 0.25 });
       gsap.from('.gps-board', { y: 34, opacity: 0, scale: 0.97, duration: 0.85, ease: 'back.out(1.25)', delay: 0.25 });
       gsap.to('.float-chip', { y: -10, repeat: -1, yoyo: true, duration: 2.2, ease: 'sine.inOut', stagger: 0.16 });
-      gsap.to('.scan-dot', { offsetDistance: '100%', repeat: -1, duration: 7, ease: 'none' });
+      gsap.from('.hero-card', { y: 18, opacity: 0, scale: 0.94, duration: 0.7, ease: 'back.out(1.4)', stagger: 0.12, delay: 0.55 });
 
       gsap.utils.toArray('section[id]').forEach((section) => {
         ScrollTrigger.create({ trigger: section, start: 'top 45%', end: 'bottom 45%', onEnter: () => setActive(section.id), onEnterBack: () => setActive(section.id) });
@@ -186,18 +187,12 @@ export default function App() {
           <div className="hero-pop trust-grid">{trust.map((item) => <span key={item}><BadgeCheck className="h-4 w-4" />{item}</span>)}</div>
         </div>
 
-        <div className="gps-board" aria-label="Career GPS visualization">
-          <div className="board-top"><span>Career GPS Hero</span><strong>LIVE DIAGNOSIS</strong></div>
-          <div className="radar-map">
-            <svg viewBox="0 0 420 320" role="img" aria-label="Career route map from blockers to interviews">
-              <path className="map-road" d="M42 245 C120 158 122 78 203 102 C285 126 260 220 378 76" />
-              <path className="map-road gps-route-path" d="M42 245 C120 158 122 78 203 102 C285 126 260 220 378 76" />
-              <circle cx="42" cy="245" r="8" /><circle cx="203" cy="102" r="8" /><circle cx="378" cy="76" r="8" />
-            </svg>
-            <span className="scan-dot" />
-            <div className="float-chip chip-one mobile-sway"><ShieldCheck className="h-4 w-4" /> ATS fixed</div>
-            <div className="float-chip chip-two mobile-sway"><Handshake className="h-4 w-4" /> recruiter route</div>
-            <div className="float-chip chip-three mobile-sway"><Target className="h-4 w-4" /> interview ready</div>
+        <div className="hero-visual-wrap">
+          <div className="gps-board" aria-label="Career GPS visualization">
+            <img className="hero-asset" src={heroAsset} alt="Career GPS route cockpit showing blockers converted into a roadmap, AI workflows, interviews, and coaching" />
+            <div className="hero-card hero-card-score float-chip mobile-sway"><span>84</span><strong>Career Health Score</strong></div>
+            <div className="hero-card hero-card-report float-chip mobile-sway"><ShieldCheck className="h-4 w-4" /><strong>Free report ready in minutes</strong></div>
+            <div className="hero-card hero-card-stack float-chip mobile-sway"><Handshake className="h-4 w-4" /><strong>AI + experts when needed</strong></div>
           </div>
           <div className="diagnosis-grid">
             {gpsItems.map((item, i) => <div key={item}><span>{String(i + 1).padStart(2, '0')}</span><strong>{item}</strong></div>)}
