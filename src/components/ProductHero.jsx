@@ -176,62 +176,92 @@ export function ProductHero() {
         { scale: 1, opacity: 1, y: 0, duration: 0.8, ease: 'back.out(1.1)', stagger: 0.06, delay: 0.25 }
       );
 
-      // Pin hero only on desktop screen sizes (width >= 1024px)
-      const isDesktop = window.innerWidth >= 1024;
-      if (isDesktop) {
+      // Setup media queries using gsap.matchMedia
+      const mm = gsap.matchMedia();
+
+      // Desktop: Pin layout and scroll-linked 3D depth adjustments
+      mm.add("(min-width: 1024px)", () => {
         ScrollTrigger.create({
           trigger: heroRef.current,
           start: 'top top',
-          end: `+=${window.innerHeight * 1.8}`,
+          end: `+=${window.innerHeight * 1.5}`,
           pin: true,
           scrub: 1.1,
           onUpdate: (self) => {
             const p = self.progress;
             if (dashboardRef.current) {
-              dashboardRef.current.style.transform = `perspective(1000px) rotateX(${10 - p * 6}deg) rotateY(${-8 + p * 6}deg) scale(${1 + p * 0.05})`;
+              dashboardRef.current.style.transform = `perspective(1000px) rotateX(${10 - p * 8}deg) rotateY(${-8 + p * 8}deg) scale(${1 + p * 0.04})`;
             }
-            const factor = p * 20;
-            if (wATS.current) wATS.current.style.transform = `translate(${-factor * 0.8}px, ${-factor * 0.6}px)`;
-            if (wInbox.current) wInbox.current.style.transform = `translate(${factor * 0.9}px, ${-factor * 0.7}px)`;
-            if (wJobs.current) wJobs.current.style.transform = `translate(${-factor * 0.7}px, ${factor * 0.8}px)`;
-            if (wLinkedIn.current) wLinkedIn.current.style.transform = `translate(${factor * 0.6}px, ${factor * 0.9}px)`;
-            if (wResume.current) wResume.current.style.transform = `translate(${-factor * 0.5}px, ${-factor * 0.9}px)`;
-            if (wPipeline.current) wPipeline.current.style.transform = `translate(${factor * 0.8}px, ${factor * 0.5}px)`;
+            const factor = p * 25;
+            if (wATS.current) wATS.current.style.transform = `translate(${-factor * 0.8}px, ${-factor * 0.6}px) translateZ(${factor * 0.5}px)`;
+            if (wInbox.current) wInbox.current.style.transform = `translate(${factor * 0.9}px, ${-factor * 0.7}px) translateZ(${factor * 0.6}px)`;
+            if (wJobs.current) wJobs.current.style.transform = `translate(${-factor * 0.7}px, ${factor * 0.8}px) translateZ(${factor * 0.4}px)`;
+            if (wLinkedIn.current) wLinkedIn.current.style.transform = `translate(${factor * 0.6}px, ${factor * 0.9}px) translateZ(${factor * 0.3}px)`;
+            if (wResume.current) wResume.current.style.transform = `translate(${-factor * 0.5}px, ${-factor * 0.9}px) translateZ(${factor * 0.2}px)`;
+            if (wPipeline.current) wPipeline.current.style.transform = `translate(${factor * 0.8}px, ${factor * 0.5}px) translateZ(${factor * 0.7}px)`;
           }
         });
-      }
+
+        // Mouse Parallax for Desktop only
+        const handleMouseMove = (e) => {
+          const halfX = window.innerWidth / 2;
+          const halfY = window.innerHeight / 2;
+          const mX = (e.clientX - halfX) / halfX;
+          const mY = (e.clientY - halfY) / halfY;
+
+          if (dashboardRef.current) {
+            dashboardRef.current.style.transform = `perspective(1000px) rotateX(${10 - mY * 4}deg) rotateY(${-8 + mX * 4}deg) scale(1.005)`;
+          }
+
+          const widgets = [
+            [wAgent, 0.3], [wATS, 0.5], [wProgress, 0.4], 
+            [wResume, 0.6], [wLinkedIn, 0.7], [wJobs, 0.8], 
+            [wInbox, 0.9], [wPipeline, 0.5]
+          ];
+          widgets.forEach(([ref, intensity]) => {
+            if (ref.current) {
+              ref.current.style.transform = `translate(${mX * 10 * intensity}px, ${mY * 10 * intensity}px)`;
+            }
+          });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+      });
+
+      // Mobile/Tablet: 3D tilting on scroll (No pinning to avoid safari address bar jumping)
+      mm.add("(max-width: 1023px)", () => {
+        gsap.fromTo(dashboardRef.current, 
+          { rotateX: 18, rotateY: -12, scale: 0.96 },
+          { 
+            rotateX: -6, rotateY: 8, scale: 1.02,
+            scrollTrigger: {
+              trigger: heroRef.current,
+              start: 'top 10%',
+              end: 'bottom 20%',
+              scrub: 1
+            }
+          }
+        );
+
+        // Mobile widget translations
+        const factor = 12;
+        if (wATS.current) {
+          gsap.to(wATS.current, { y: -factor * 0.5, x: -factor * 0.3, scrollTrigger: { trigger: heroRef.current, start: 'top 10%', end: 'bottom 20%', scrub: 1 } });
+        }
+        if (wInbox.current) {
+          gsap.to(wInbox.current, { y: -factor * 0.6, x: factor * 0.4, scrollTrigger: { trigger: heroRef.current, start: 'top 10%', end: 'bottom 20%', scrub: 1 } });
+        }
+        if (wJobs.current) {
+          gsap.to(wJobs.current, { y: factor * 0.4, x: -factor * 0.4, scrollTrigger: { trigger: heroRef.current, start: 'top 10%', end: 'bottom 20%', scrub: 1 } });
+        }
+        if (wLinkedIn.current) {
+          gsap.to(wLinkedIn.current, { y: factor * 0.5, x: factor * 0.3, scrollTrigger: { trigger: heroRef.current, start: 'top 10%', end: 'bottom 20%', scrub: 1 } });
+        }
+      });
     });
 
     return () => ctx.revert();
-  }, []);
-
-  // ── Mouse Move Parallax (Desktop Only) ───────────────────────────────────────
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (window.innerWidth < 1024) return;
-      const halfX = window.innerWidth / 2;
-      const halfY = window.innerHeight / 2;
-      const mX = (e.clientX - halfX) / halfX;
-      const mY = (e.clientY - halfY) / halfY;
-
-      if (dashboardRef.current) {
-        dashboardRef.current.style.transform = `perspective(1000px) rotateX(${10 - mY * 4}deg) rotateY(${-8 + mX * 4}deg) scale(1.005)`;
-      }
-
-      const widgets = [
-        [wAgent, 0.3], [wATS, 0.5], [wProgress, 0.4], 
-        [wResume, 0.6], [wLinkedIn, 0.7], [wJobs, 0.8], 
-        [wInbox, 0.9], [wPipeline, 0.5]
-      ];
-      widgets.forEach(([ref, intensity]) => {
-        if (ref.current) {
-          ref.current.style.transform = `translate(${mX * 10 * intensity}px, ${mY * 10 * intensity}px)`;
-        }
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   // ── Magnetic Button Script ───────────────────────────────────────────────────
@@ -258,6 +288,7 @@ export function ProductHero() {
     return () => cleanups.forEach(c => c());
   }, []);
 
+
   // ── Split Text character layout helper ────────────────────────────────────────
   const renderTextSpans = (text) => {
     return text.split(" ").map((word, i) => (
@@ -273,7 +304,7 @@ export function ProductHero() {
 
   return (
     <section ref={heroRef} id="hero" 
-      className="relative w-full min-h-screen lg:h-screen lg:max-h-[850px] flex items-center bg-[#050505] overflow-hidden select-none px-6 md:px-12 lg:px-20 pt-20 pb-10">
+      className="relative w-full min-h-screen lg:h-screen lg:max-h-[850px] flex items-center bg-[#050505] overflow-hidden select-none px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-10">
       
       {/* ── Background Lights ──────────────────────────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -295,36 +326,38 @@ export function ProductHero() {
           </div>
 
           {/* Headline */}
-          <h1 className="font-['Barlow_Semi_Condensed'] font-extrabold leading-[0.93] tracking-[-0.04em] text-white mb-4.5"
-              style={{ fontSize: 'clamp(2.4rem, 5vw, 4.1rem)' }}>
-            <div>{renderTextSpans("What if your")}</div>
-            <div>{renderTextSpans("job search")}</div>
-            <div className="text-[#10b981]">{renderTextSpans("never stopped.")}</div>
+          <h1 className="font-['Barlow_Semi_Condensed'] font-extrabold leading-[0.96] tracking-[-0.04em] text-white mb-4.5"
+              style={{ fontSize: 'clamp(2.1rem, 4.8vw, 3.8rem)' }}>
+            <div>{renderTextSpans("Everything Between")}</div>
+            <div>{renderTextSpans("You and Your")}</div>
+            <div>{renderTextSpans("Next U.S. Job—")}</div>
+            <div className="text-[#10b981]">{renderTextSpans("In One Place.")}</div>
           </h1>
 
           {/* Supporting Description */}
-          <p className="hero-fade-left opacity-0 text-white/50 text-sm md:text-base leading-[1.62] mb-6.5 max-w-[450px]">
-            Career GPS™ deploys a dedicated suite of background AI agents that scan, apply, tailor, and follow up continuously — fully supervised by expert human coaches.
+          <p className="hero-fade-left opacity-0 text-white/50 text-xs md:text-sm leading-[1.62] mb-6.5 max-w-[485px]">
+            Stop paying for multiple AI tools, expensive consultancies, and disconnected courses. Crafture is the AI-powered Career Operating System that identifies what's blocking your job search, automates repetitive work, and gives you expert guidance—so you can focus on getting hired.
           </p>
 
           {/* CTAs */}
           <div className="hero-fade-left opacity-0 flex flex-wrap items-center gap-3.5 mb-7">
-            <a href="#pricing" 
+            <a href="https://carrer-gps-asess.onrender.com/" 
+               target="_blank"
+               rel="noopener noreferrer"
                className="btn-magnetic btn-shimmer inline-flex items-center gap-2 bg-[#10b981] text-black font-['Barlow_Semi_Condensed'] font-extrabold text-[11px] uppercase tracking-[0.15em] px-7 py-3.5 rounded-full transition-transform"
                style={{ boxShadow: '0 8px 30px rgba(16,185,129,0.3)' }}>
-              Start Free Analysis
+              Start Your FREE Career GPS Assessment
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
-            <a href="#howitworks"
+            <a href="https://carrer-gps-asess.onrender.com/" target="_blank"
                className="btn-magnetic inline-flex items-center gap-2 text-[11px] font-['Barlow_Semi_Condensed'] font-bold text-white/60 hover:text-white border border-white/10 hover:border-white/25 px-6 py-3.5 rounded-full transition-colors backdrop-blur-md bg-white/2">
-              <Play className="w-3 h-3 fill-white/50" />
-              Watch Demo
+              See Pricing
             </a>
           </div>
 
           {/* Trust Metrics */}
           <div className="hero-fade-left opacity-0 flex flex-wrap gap-4">
-            {['SOC-2 Secured', '24/7 Automation', 'USA Consultants'].map(t => (
+            {['No Heavy Upfront Consultancy Fees', 'No Salary Percentage', 'AI + Human Experts', 'Built for U.S. IT & Non-IT Professionals'].map(t => (
               <span key={t} className="flex items-center gap-1.5 text-[9.5px] text-white/28 font-['Barlow_Semi_Condensed'] uppercase tracking-[0.08em]">
                 <BadgeCheck className="w-3.5 h-3.5 text-[#10b981]" />
                 {t}
@@ -391,8 +424,8 @@ export function ProductHero() {
                     <span className="text-[8.5px] text-[#10b981] font-bold uppercase tracking-widest mt-1.5">Optimal Fit</span>
                   </div>
 
-                  {/* LinkedIn SEO Strength widget (hidden on mobile, shown on desktop) */}
-                  <div ref={wLinkedIn} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] hidden md:flex flex-col justify-between transition-all">
+                  {/* LinkedIn SEO Strength widget */}
+                  <div ref={wLinkedIn} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] flex flex-col justify-between transition-all">
                     <div className="flex items-center gap-1.5 mb-1.5">
                       <Linkedin className="w-3.5 h-3.5 text-[#0077b5]" />
                       <span className="text-[8.5px] text-white/40 uppercase tracking-widest font-['Barlow_Semi_Condensed']">LinkedIn SEO</span>
@@ -405,8 +438,8 @@ export function ProductHero() {
                   </div>
                 </div>
 
-                {/* Resume checklist (hidden on mobile) */}
-                <div ref={wResume} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] hidden md:block transition-all">
+                {/* Resume checklist */}
+                <div ref={wResume} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] block transition-all">
                   <span className="text-[8.5px] text-white/35 font-['Barlow_Semi_Condensed'] uppercase tracking-widest block mb-2.5">Resume ATS Checklist</span>
                   <div className="space-y-2">
                     {checklist.map((item, i) => (
@@ -446,9 +479,9 @@ export function ProductHero() {
                   </div>
                 </div>
 
-                {/* Recruiter alerts (hidden on mobile) */}
+                {/* Recruiter alerts */}
                 <div ref={wInbox} 
-                     className={`glass-widget rounded-xl p-3 border border-white/[0.04] hidden md:block transition-all duration-750 transform ${showNotification ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-3 opacity-0 scale-95'}`}>
+                     className={`glass-widget rounded-xl p-3 border border-white/[0.04] block transition-all duration-750 transform ${showNotification ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-3 opacity-0 scale-95'}`}>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-6.5 h-6.5 rounded-full bg-[#10b981]/15 text-[#10b981] text-[9px] font-extrabold flex items-center justify-center shrink-0">SC</div>
                     <div className="min-w-0">
@@ -462,8 +495,8 @@ export function ProductHero() {
                   </div>
                 </div>
 
-                {/* Weekly progress chart (hidden on mobile) */}
-                <div ref={wProgress} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] hidden md:block transition-all">
+                {/* Weekly progress chart */}
+                <div ref={wProgress} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] block transition-all">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-[8.5px] text-white/35 font-['Barlow_Semi_Condensed'] uppercase tracking-widest">Outreach Velocity</span>
                     <TrendingUp className="w-3 h-3 text-[#10b981]" />
@@ -481,8 +514,8 @@ export function ProductHero() {
                   </svg>
                 </div>
 
-                {/* Pipeline Stages widget (hidden on mobile) */}
-                <div ref={wPipeline} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] hidden md:block transition-all">
+                {/* Pipeline Stages widget */}
+                <div ref={wPipeline} className="glass-widget rounded-xl p-3.5 border border-white/[0.04] block transition-all">
                   <span className="text-[8.5px] text-white/35 font-['Barlow_Semi_Condensed'] uppercase tracking-widest block mb-2">Interview Pipeline</span>
                   <div className="flex items-center gap-1.5 justify-between">
                     {['Tailored', 'Applied', 'Screen', 'Offered'].map((s, idx) => (

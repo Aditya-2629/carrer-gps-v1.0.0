@@ -1,0 +1,26 @@
+Crafture 2.0 Landing Page Blueprint
+Goal: Convert visitors into Career GPS users, then upgrade them to AI and AI + Human plans.
+Hero Section
+Headline:Everything Between You and Your Next U.S. Job—In One Place.Subheadline:Stop paying for multiple AI tools, expensive consultancies, and disconnected courses.Crafture is the AI-powered Career Operating System that identifies what's blocking your job search, automates repetitive work, and gives you expert guidance—so you can focus on getting hired.Trust:• No Heavy Upfront Consultancy Fees• No Salary Percentage• AI + Human Experts• Built for U.S. IT Job SeekersPrimary CTA:Start Your FREE Career GPS Assessmenthttps://carrer-gps-asess.onrender.com/Secondary CTA:See PricingRecommended Image:Career GPS Hero Image
+Section 2 – The Problem
+Heading:Why Most Job Seekers Never Get Enough InterviewsCopy:Most candidates don't fail because they lack skills.They fail because their job search system is broken.Pain Points:• Resume not ATS-friendly• Weak LinkedIn profile• Applying to the wrong jobs• No recruiter outreach• Poor networking• Weak interview preparation• No follow-up system• Too many disconnected toolsCTA:Find What's Holding You Back
+Section 3 – Career GPS
+Heading:Meet Crafture Career GPS™Explain that Career GPS identifies:• Career Health Score• Strengths• Weaknesses• Missing Opportunities• Personalized RoadmapCTA:Start Free Assessment
+Section 4 – One Platform Instead of 10 Tools
+Comparison:Resume Builder ✔ATS Scanner ✔LinkedIn Optimization ✔AI Job Search ✔Networking ✔Recruiter Outreach ✔Interview Prep ✔Progress Tracking ✔Community ✔Closing:Everything works together in one intelligent platform.
+Section 5 – Choose Your Support Level
+Career GPS (FREE)Best for discovering what's blocking your job search.Buy:https://carrer-gps-asess.onrender.com/Career GPS AIAI-powered job search system configured for you.Buy:https://superprofile.bio/crafture2/scVicvBNXLCareer GPS AI + HumanAI plus dedicated recruiter and coach support.Buy:https://superprofile.bio/crafture2/cJaJPBufBv
+Section 6 – How It Works
+1. Take FREE Career GPS Assessment2. Receive Personalized Career Report3. Choose Your Plan4. Start Landing More Interviews
+Section 7 – Platform Features
+• Resume Optimization• LinkedIn Optimization• AI Job Search Automation• AI Networking• Recruiter Outreach• Interview Preparation• Mock Interviews• Application Tracker• Community• Progress Dashboard
+Section 8 – AI + Human
+Heading:When AI Isn't EnoughCopy:AI automates repetitive work.Human experts provide strategy, accountability, and interview coaching.Together they deliver better results.
+Section 9 – Community
+Join the Crafture Community• Weekly Sessions• Resume Reviews• Hiring Trends• Peer Networking• Free Resources
+Section 10 – FAQ
+Suggested FAQs:• Why not just use ChatGPT?• How is this different from consultancies?• Why not buy separate AI tools?• Is Career GPS free?• Can I upgrade later?
+Final CTA
+Ready to Stop Guessing?Everything between you and your next U.S. job is finally in one place.Start Your FREE Career GPS Assessment:https://carrer-gps-asess.onrender.com/
+Design Notes
+Recommended Image Order:1. Career GPS Hero2. Problem Section (minimal)3. Career GPS Visualization4. One Platform vs 10 Tools (new comparison graphic)5. Pricing Comparison6. AI Dashboard7. AI + Human8. Community9. Final Hero CTACore Messaging:Career GPS → Find the ProblemCareer GPS AI → AI Does the WorkCareer GPS AI + Human → AI + Experts Deliver Results

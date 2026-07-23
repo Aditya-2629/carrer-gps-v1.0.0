@@ -17,37 +17,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const faqs = [
-  { q: "Is Career GPS free to start?", a: "Yes. The Starter tier is completely free — it gives you one full Career Health Analysis, an ATS diagnostic scan, 5 AI resume scans, and baseline salary benchmarking. Paid plans unlock 24/7 AI agent automation and human consultancy access." },
-  { q: "Is this a recruitment agency or a consultancy?", a: "We are a career consultancy, not a recruiting agency. We represent you — not the employer. That means we optimize for your compensation, timeline, and career trajectory, not for the fastest placement at the lowest cost." },
-  { q: "How long does the initial setup take?", a: "Your dashboard activates immediately. AI agents can configure and begin your first scan in under 10 minutes. For Human+AI plans, your dedicated coach books a strategy kickoff within 24–48 hours." },
-  { q: "Do I need technical skills to use Career GPS?", a: "None. We build and manage every automation system for you. Your interaction is a clean dashboard with daily priority tasks. All configuration, agent setup, and technical maintenance is handled by our team." },
-  { q: "What if I already use ChatGPT for job searching?", a: "ChatGPT is a general tool that requires hours of daily manual prompting. Career GPS™ is a purpose-built OS — multiple specialized agents work concurrently across resume tailoring, LinkedIn SEO, outbound applications, and cold outreach." },
-  { q: "How does the human support component work?", a: "AI handles volume: scanning, tailoring, submitting, and following up. Human experts handle strategy: resume rewriting, mock interview coaching, direct recruiter messaging, and salary negotiation scripts. You get both layers running concurrently." },
-  { q: "What industries and locations do you support?", a: "We serve professional corporate roles across the USA, focusing on Technology, Finance, Marketing, Operations, and Healthcare Management." },
-  { q: "Can I cancel anytime?", a: "Yes. All paid plans are month-to-month. No annual contracts, no cancellation penalties. Manage everything from your billing dashboard in one click." },
-  { q: "Does Career GPS guarantee a job offer?", a: "No service can legally guarantee a job — final decisions belong to employers. We guarantee a dramatically improved pipeline: more applications submitted, more recruiter outreach, and more interview opportunities than you would generate manually." },
-  { q: "How does the AI tailor resumes without making things up?", a: "Our agents only work with verified data from your career history. They restructure, reorder, and re-emphasize your actual experience using ATS keyword patterns from each target job description. No hallucinated skills or fabricated credentials." },
+  { q: "Why not just use ChatGPT?", a: "ChatGPT is a general LLM that requires hours of manual copy-pasting, custom prompting, and checking for hallucinations. Career GPS™ is a purpose-built Career OS featuring 8 specialized agents working concurrently—analyzing ATS, optimizing LinkedIn searchability, submitting matching roles, and automating outreach automatically." },
+  { q: "How is this different from consultancies?", a: "Traditional consultancies charge heavy upfront fees (often thousands of dollars) or take a large percentage of your final salary. Career GPS™ is an outcome-driven monthly platform with zero salary-share and no heavy initial consulting costs, putting control and savings back in your hands." },
+  { q: "Why not buy separate AI tools?", a: "Paying for separate ATS scanners, resume tailors, outreach message templates, LinkedIn indexers, and application trackers quickly adds up to hundreds of dollars a month in disconnected tools. Career GPS™ unites everything into a single, cohesive operating system where every piece shares data to optimize your target pipeline." },
+  { q: "Is Career GPS free?", a: "Yes! Our Starter tier is completely free. It includes one full Career Health Analysis, an ATS diagnostic scan, 5 AI resume optimizations, and baseline salary benchmarking. It requires no credit card to start." },
+  { q: "Can I upgrade later?", a: "Absolutely. You can start with our free assessment, get your report, and upgrade to the AI Plan or the Elite (AI + Human) plan whenever you are ready to launch your background job search campaigns. Cancel or downgrade anytime." },
 ];
 
-const aiAgents = [
-  { id: "01", icon: <ScanSearch className="w-5 h-5" />, title: "Job Scan Agent", desc: "Continuously scrapes LinkedIn, Indeed, ZipRecruiter, and company career pages. Filters to your 85%+ match threshold and queues applications automatically." },
-  { id: "02", icon: <FileText className="w-5 h-5" />, title: "Resume Tailor", desc: "Re-ranks bullets, injects role-specific keywords, and reformats structure per JD. Every application gets a fresh, ATS-optimized version of your resume." },
-  { id: "03", icon: <Linkedin className="w-5 h-5" />, title: "LinkedIn Optimizer", desc: "Audits headline, about section, and skills in real-time against active recruiter search patterns. Pushes profile to the top of filtered searches." },
-  { id: "04", icon: <Send className="w-5 h-5" />, title: "Cold Outreach Bot", desc: "Maps org structures at target companies, identifies hiring managers, and sends personalized LinkedIn messages and email sequences on your behalf." },
-  { id: "05", icon: <BrainCircuit className="w-5 h-5" />, title: "Interview Prep AI", desc: "Generates role-specific behavioral and technical questions from each JD. Runs mock sessions and tracks weak areas to focus coaching attention." },
-  { id: "06", icon: <MessageCircle className="w-5 h-5" />, title: "Inbox Copilot", desc: "Monitors your primary inbox for recruiter messages, flags urgent responses, and drafts reply templates so you never miss a time-sensitive opportunity." },
-  { id: "07", icon: <RefreshCw className="w-5 h-5" />, title: "Follow-Up Engine", desc: "Tracks every open application and auto-sends polite follow-up messages when pipelines go quiet beyond 5–7 business days." },
-  { id: "08", icon: <Target className="w-5 h-5" />, title: "Salary Intelligence", desc: "Continuously pulls comp data from current market sources. Flags roles below target and flags counteroffers when final negotiation begins." },
-];
 
-const problemStages = [
-  { n: "7", label: "The Reset", detail: "Back to zero. No pipeline, no momentum. Start the whole cycle again.", color: "border-red-500/25 bg-red-500/5" },
-  { n: "6", label: "The Rejection / Ghost", detail: "Offer goes cold. ATS filtered you. Recruiter never responded.", color: "border-red-500/20 bg-red-500/3" },
-  { n: "5", label: "Stop Applying", detail: "Interview prep consumes all your time. Application pipeline dries up.", color: "border-white/10 bg-white/[0.03]" },
-  { n: "4", label: "Interview Call", detail: "Finally got one. You scramble to research, prep answers, schedule.", color: "border-white/10 bg-white/[0.03]" },
-  { n: "3", label: "Wait & Hope", detail: "Resume submitted. Now you wait. ATS may have already filtered you.", color: "border-white/[0.08] bg-white/[0.02]" },
-  { n: "2", label: "Manual Tailoring", detail: "2+ hours rewriting the same experience for one job description.", color: "border-white/[0.08] bg-white/[0.02]" },
-  { n: "1", label: "JD Hunt", detail: "Scrolling boards manually. Most roles are already filled internally.", color: "border-white/5 bg-white/[0.01]" },
+
+const painPoints = [
+  { n: "8", label: "Disconnected Tools", detail: "Using 10+ different single-purpose AI sites, tracking sheets, and tools that do not communicate.", color: "border-red-500/25 bg-red-500/5" },
+  { n: "7", label: "No Follow-Up System", detail: "Outbound threads go cold. Recruiters ghost because you lack automated check-in systems.", color: "border-red-500/20 bg-red-500/3" },
+  { n: "6", label: "Weak Interview Prep", detail: "behavioral and technical prep is generic, not calibrated to the company's active JDs.", color: "border-white/10 bg-white/[0.03]" },
+  { n: "5", label: "Poor Networking", detail: "Relying purely on forms. No warm referral mapping or manager matching to bypass filters.", color: "border-white/10 bg-white/[0.03]" },
+  { n: "4", label: "No Recruiter Outreach", detail: "Hiring managers never see your credentials because your application sits flat in the ATS database.", color: "border-white/[0.08] bg-white/[0.02]" },
+  { n: "3", label: "Wrong Job Targets", detail: "Scrolling boards manually, applying to expired listings or roles filled internally.", color: "border-white/[0.08] bg-white/[0.02]" },
+  { n: "2", label: "Weak LinkedIn SEO", detail: "recruiter queries filter you out because your profile lacks search optimized keyword clusters.", color: "border-white/5 bg-white/[0.01]" },
+  { n: "1", label: "ATS Hostile Resume", detail: "Parsing errors block you. Formatting issues prevent automated screening algorithms from matching.", color: "border-white/5 bg-white/[0.01]" },
 ];
 
 // ─── Section label component ───────────────────────────────────────────────────
@@ -112,8 +99,6 @@ export default function App() {
   const sliderRef = useRef(null);
 
   const problemCardsRef  = useRef([]);
-  const aiContainerRef   = useRef(null);
-  const aiTriggerRef     = useRef(null);
 
   // ── Immediate load flag ────────────────────────────────────────────────────
   useEffect(() => { setIsLoaded(true); }, []);
@@ -145,42 +130,7 @@ export default function App() {
     }
   };
 
-  // ── Custom cursor ──────────────────────────────────────────────────────────
-  useEffect(() => {
-    const isFine = window.matchMedia('(pointer: fine)').matches;
-    if (!isFine) return;
-    const follower = document.getElementById('custom-follower');
-    const dot      = document.getElementById('custom-dot');
-    if (!follower || !dot) return;
 
-    let tX = 0, tY = 0, fX = 0, fY = 0, dX = 0, dY = 0, raf;
-    const onMove = (e) => { tX = e.clientX; tY = e.clientY; };
-    const tick   = () => {
-      fX += (tX - fX) * 0.12; fY += (tY - fY) * 0.12;
-      dX += (tX - dX) * 0.35; dY += (tY - dY) * 0.35;
-      follower.style.transform = `translate3d(${fX}px,${fY}px,0) translate(-50%,-50%)`;
-      dot.style.transform      = `translate3d(${dX}px,${dY}px,0) translate(-50%,-50%)`;
-      raf = requestAnimationFrame(tick);
-    };
-    const onOver = (e) => {
-      const t = e.target.closest('a,button,[role=button],.cursor-pointer');
-      if (t) follower.classList.add('hovering');
-    };
-    const onOut  = (e) => {
-      const t = e.target.closest('a,button,[role=button],.cursor-pointer');
-      if (t) follower.classList.remove('hovering');
-    };
-    window.addEventListener('mousemove', onMove, { passive: true });
-    document.addEventListener('mouseover', onOver, { passive: true });
-    document.addEventListener('mouseout',  onOut,  { passive: true });
-    raf = requestAnimationFrame(tick);
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseover', onOver);
-      document.removeEventListener('mouseout',  onOut);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 
   // ── Lenis + GSAP Scroll Animations ────────────────────────────────────────
   useEffect(() => {
@@ -196,7 +146,7 @@ export default function App() {
     gsap.ticker.lagSmoothing(0);
 
     // Section scroll tracking active nav state
-    const sections = ['hero', 'problem', 'features', 'ai-team', 'human', 'pricing', 'faq'];
+    const sections = ['hero', 'problem', 'careergps', 'features', 'human', 'pricing', 'community', 'faq'];
     sections.forEach(s => {
       ScrollTrigger.create({
         trigger: `#${s}`,
@@ -207,89 +157,94 @@ export default function App() {
       });
     });
 
-    // Staggered title reveals
-    gsap.utils.toArray('.js-reveal-title').forEach(el => {
-      gsap.from(el, {
-        yPercent: 108, duration: 0.85, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
-      });
-    });
+    // ── Navbar entrance on load ─────────────────────────────────────────────
+    gsap.fromTo('header',
+      { y: -80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', delay: 0.2 }
+    );
 
-    // Aurora parallax background
+    // ── Aurora parallax background ──────────────────────────────────────────
     gsap.to('.js-aurora-bg', {
       yPercent: 12, ease: 'none',
       scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: true },
     });
 
-    // Problem cards cascade
-    gsap.from('.js-prob-card', {
-      x: 220, rotateY: 55, opacity: 0, transformOrigin: 'left center', stagger: 0.06,
-      scrollTrigger: { trigger: '#problem', start: 'top 80%', end: 'top 30%', scrub: 1 },
-    });
-    problemCardsRef.current.forEach((el, i) => {
-      if (!el) return;
-      gsap.to(el, {
-        y: -15 * (i + 1) * 0.25, ease: 'none',
-        scrollTrigger: { trigger: '#problem', start: 'top bottom', end: 'bottom top', scrub: 1.1 },
+    // ── Staggered title reveals (global) ────────────────────────────────────
+    gsap.utils.toArray('.js-reveal-title').forEach(el => {
+      gsap.from(el, {
+        yPercent: 110, opacity: 0, duration: 0.9, ease: 'power4.out',
+        scrollTrigger: { trigger: el, start: 'top 94%', toggleActions: 'play none none none' },
       });
     });
 
-    // Cost cards pop
-    gsap.from('.js-cost-card', {
-      scale: 0.2, rotationY: 30, opacity: 0, stagger: 0.06, transformOrigin: 'center center',
-      scrollTrigger: { trigger: '#cost', start: 'top 82%', end: 'top 45%', scrub: 1 },
+    // ══ SECTION 2 · PROBLEM ═══════════════════════════════════════════════
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      painPoints.forEach((s, i) => {
+        const el = problemCardsRef.current[i];
+        if (!el) return;
+        gsap.set(el, {
+          transformStyle: 'preserve-3d',
+          transform: `translateZ(${i * -30}px) translateY(${i * 24}px) rotateX(-4deg)`
+        });
+        el.addEventListener('mouseenter', () => {
+          gsap.to(el, { transform: `translateZ(45px) translateY(${i * 24 - 18}px) rotateX(0deg)`, duration: 0.3, ease: 'power2.out' });
+        });
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, { transform: `translateZ(${i * -30}px) translateY(${i * 24}px) rotateX(-4deg)`, duration: 0.4, ease: 'power2.out' });
+        });
+      });
+
+      gsap.from('.js-prob-card', {
+        x: 200, rotateY: 50, opacity: 0, stagger: 0.06,
+        scrollTrigger: { trigger: '#problem', start: 'top 78%', end: 'top 28%', scrub: 1.2 },
+      });
     });
 
-    // Feature cards bento grid reveal
-    gsap.from('.js-feat-card', {
-      scale: 0.94, opacity: 0, y: 30, stagger: 0.08,
-      scrollTrigger: { trigger: '#features', start: 'top 82%', end: 'top 50%', scrub: 1 },
+    mm.add("(max-width: 767px)", () => {
+      gsap.from('.js-prob-card', {
+        x: 120, rotateY: 20, opacity: 0, stagger: 0.06,
+        scrollTrigger: { trigger: '#problem', start: 'top 85%', end: 'top 40%', scrub: 1 }
+      });
     });
 
-    // AI Team horizontal scroll
-    const scrollW   = aiContainerRef.current.scrollWidth;
-    const toScroll  = scrollW - window.innerWidth;
-    gsap.to(aiContainerRef.current, {
-      x: () => -(toScroll + 80), ease: 'none',
-      scrollTrigger: {
-        trigger: aiTriggerRef.current, pin: true, scrub: 1,
-        start: 'top top', end: () => `+=${toScroll + 400}`,
-        invalidateOnRefresh: true,
-      },
+    // Cost cards — batch reveal with stagger
+    ScrollTrigger.batch('.js-cost-card', {
+      start: 'top 92%',
+      once: true,
+      onEnter: (batch) => gsap.fromTo(batch,
+        { scale: 0.85, opacity: 0, y: 25 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: 'back.out(1.5)', stagger: 0.07, overwrite: true }
+      ),
     });
 
-    // Human support cards
-    gsap.from('.js-human-card', {
-      rotateX: 60, transformOrigin: 'top center', opacity: 0, stagger: 0.06,
-      scrollTrigger: { trigger: '#human', start: 'top 82%', end: 'top 42%', scrub: 1 },
+    // ══ SECTION 3 · CAREER GPS ════════════════════════════════════════════
+
+    // Diagnostic rings scroll-linked rotation
+    gsap.fromTo('.js-diagnostic-ring-1', { rotate: 0 }, {
+      rotate: 360, ease: 'none',
+      scrollTrigger: { trigger: '#careergps', start: 'top bottom', end: 'bottom top', scrub: 1 }
+    });
+    gsap.fromTo('.js-diagnostic-ring-2', { rotate: 0 }, {
+      rotate: -360, ease: 'none',
+      scrollTrigger: { trigger: '#careergps', start: 'top bottom', end: 'bottom top', scrub: 1 }
+    });
+    gsap.fromTo('.js-diagnostic-ring-3', { rotate: 0 }, {
+      rotate: 180, ease: 'none',
+      scrollTrigger: { trigger: '#careergps', start: 'top bottom', end: 'bottom top', scrub: 1 }
     });
 
-    // Comparison rows
-    gsap.from('.js-comp-row', {
-      x: 80, opacity: 0, stagger: 0.04,
-      scrollTrigger: { trigger: '#comparison', start: 'top 85%', end: 'top 55%', scrub: 1 },
-    });
-
-    // Pricing cards
-    gsap.from('.js-price-card', {
-      scale: 0.94, y: 40, opacity: 0, stagger: 0.08,
-      scrollTrigger: { trigger: '#pricing', start: 'top 82%', end: 'top 55%', scrub: 1 },
-    });
-
-    // Timeline line fill
-    gsap.from('.js-timeline-fill', {
-      height: '0%', ease: 'none',
-      scrollTrigger: { trigger: '#howitworks', start: 'top 55%', end: 'bottom 75%', scrub: 1 },
-    });
-
-    // CTA zoom-in
-    gsap.from('.js-cta-text', {
-      scale: 0.9, opacity: 0.6,
-      scrollTrigger: { trigger: '#finalcta', start: 'top 85%', end: 'top 55%', scrub: 1 },
-    });
-    gsap.to('.js-cta-orb', {
-      scale: 1.3, opacity: 0.85,
-      scrollTrigger: { trigger: '#finalcta', start: 'top bottom', end: 'bottom top', scrub: 1 },
+    // Diagnostic score countup 0 → 88%
+    const scoreVal = { val: 0 };
+    gsap.to(scoreVal, {
+      val: 88, duration: 1.8, ease: 'power2.out',
+      scrollTrigger: { trigger: '#careergps', start: 'top 72%', once: true },
+      onUpdate: () => {
+        const el = document.getElementById('diagnostic-score-num');
+        if (el) el.textContent = Math.round(scoreVal.val) + '%';
+      }
     });
 
     return () => {
@@ -300,16 +255,14 @@ export default function App() {
 
   // ── Helper to position active indicator dot ───────────────────────────────
   const getNavOffset = (sec) => {
-    const list = ['hero', 'problem', 'features', 'ai-team', 'human', 'pricing', 'faq'];
+    const list = ['hero', 'problem', 'careergps', 'features', 'human', 'pricing', 'community', 'faq'];
     const idx = list.indexOf(sec);
     return idx >= 0 ? idx * 56 : 0;
   };
 
   return (
     <>
-      {/* ── Custom Cursor Follower ────────────────────────────────────────────── */}
-      <div id="custom-follower" className="cursor-follower hidden md:block" style={{ transform: 'translate3d(-200px,-200px,0) translate(-50%,-50%)' }} />
-      <div id="custom-dot"      className="cursor-dot      hidden md:block" style={{ transform: 'translate3d(-200px,-200px,0) translate(-50%,-50%)' }} />
+
 
       {/* ── Main wrapper (locked against horizontal overflow) ──────────────────── */}
       <div className="relative min-h-screen overflow-x-hidden">
@@ -350,13 +303,13 @@ export default function App() {
             {/* Nav links with indicator dot */}
             <div className="relative hidden md:flex items-center">
               <nav className="flex items-center gap-7 text-[12px] text-white/45 font-['Barlow_Semi_Condensed'] font-bold uppercase tracking-[0.08em] pr-4">
-                {[['#hero','Home','hero'],['#problem','Problem','problem'],['#features','System','features'],['#ai-team','AI Team','ai-team'],['#human','Human+AI','human'],['#pricing','Pricing','pricing'],['#faq','FAQ','faq']].map(([h,l,id]) => (
+                {[['#hero','Home','hero'],['#problem','Problem','problem'],['#careergps','Career GPS','careergps'],['#features','System','features'],['#human','Human+AI','human'],['#pricing','Pricing','pricing'],['#community','Community','community'],['#faq','FAQ','faq']].map(([h,l,id]) => (
                   <a key={h} href={h} className={`nav-link hover:text-white transition-colors py-1 ${activeSection === id ? 'active text-[#10b981]' : ''}`}>{l}</a>
                 ))}
               </nav>
             </div>
 
-            <a href="#pricing"
+            <a href="https://carrer-gps-asess.onrender.com/"
                className="btn-shimmer text-[10px] font-['Barlow_Semi_Condensed'] font-bold uppercase tracking-[0.14em] px-5 py-2.5 rounded-full transition-all"
                style={{ border: '1px solid rgba(16,185,129,0.28)', color: '#10b981', background: 'rgba(16,185,129,0.05)' }}>
               Free Analysis
@@ -374,141 +327,219 @@ export default function App() {
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             
             <div className="space-y-6">
-              <SectionLabel text="Root Cause" color="red" />
+              <SectionLabel text="Why Candidates Fail" color="red" />
               <div className="overflow-hidden">
                 <SectionH2>
-                  <span className="js-reveal-title block">Your job search doesn't fail</span>
-                  <span className="js-reveal-title block text-red-400 mt-1">because it keeps starting over.</span>
+                  <span className="js-reveal-title block">Why most job seekers</span>
+                  <span className="js-reveal-title block text-red-400 mt-1">never get enough interviews.</span>
                 </SectionH2>
               </div>
               <p className="text-white/50 font-sans text-[1.02rem] leading-[1.72] max-w-md">
-                Job searching is a pipeline problem. Every time you stop applying to prep for an interview — your pipeline empties. When rejection arrives, you restart from zero.
+                Most candidates don't fail because they lack skills. They fail because their job search system is broken. Career GPS™ automates the pipeline so you never reset.
               </p>
               <div className="p-5 rounded-xl border border-red-500/12 flex gap-4" style={{ background: 'rgba(239,68,68,0.03)' }}>
                 <CircleX className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-['Barlow_Semi_Condensed'] font-bold text-[12px] text-white uppercase tracking-wide mb-1">Every reset costs you real time and money</p>
-                  <p className="text-[11px] text-white/40 leading-relaxed">A gap in outreach breaks market relevance. Companies hire fast. A stalled pipeline means missed windows that don't reopen.</p>
+                  <p className="font-['Barlow_Semi_Condensed'] font-bold text-[12px] text-white uppercase tracking-wide mb-1">Find what's holding you back</p>
+                  <p className="text-[11px] text-white/40 leading-relaxed">Our diagnostic assessment scans 8 primary pipeline dimensions, indexing ATS parsing faults, LinkedIn SEO rankings, and application rates.</p>
                 </div>
               </div>
             </div>
 
-            {/* Right — 3D stacked cards */}
-            <div className="relative flex justify-center" style={{ perspective: '1200px' }}>
-              <div className="relative w-full max-w-[390px] h-[390px]" style={{ transformStyle: 'preserve-3d' }}>
-                {problemStages.map((s, i) => (
+            {/* Right — 3D stacked cards / Carousel */}
+            <div className="relative w-full max-w-lg mx-auto md:max-w-none" style={{ perspective: '1200px' }}>
+              {/* Desktop Stacked look, Mobile horizontally scrolling 3D track */}
+              <div className="flex overflow-x-auto md:overflow-x-visible pb-8 md:pb-0 gap-5 md:gap-0 snap-x snap-mandatory md:relative md:block md:w-[390px] md:h-[450px] mx-auto" style={{ transformStyle: 'preserve-3d' }}>
+                {painPoints.map((s, i) => (
                   <div key={i}
                        ref={el => (problemCardsRef.current[i] = el)}
-                       className="js-prob-card absolute w-full cursor-pointer"
-                       style={{ transform: `translateZ(${i * -28}px) translateY(${i * 22}px) rotateX(-3deg)`, transformStyle: 'preserve-3d', zIndex: 10 - i }}>
-                    <TiltCard maxTilt={5}>
-                      <div className={`glass-ultra rounded-2xl p-5 border ${s.color} h-full w-full`}>
+                       className="js-prob-card shrink-0 w-[280px] md:w-full snap-center snap-always md:absolute cursor-pointer transition-all duration-300"
+                       style={{ 
+                         transformStyle: 'preserve-3d',
+                         zIndex: 10 - i
+                       }}>
+                    <TiltCard maxTilt={6}>
+                      <div className={`glass-ultra rounded-2xl p-5 border ${s.color} h-full w-full shadow-lg`}>
                         <div className="flex justify-between items-center">
-                          <span className="font-['Barlow_Semi_Condensed'] font-bold text-[13px] text-white">{s.label}</span>
-                          <span className="text-[9px] font-mono text-white/20">STAGE {s.n}</span>
+                          <span className="font-['Barlow_Semi_Condensed'] font-bold text-[13px] text-white tracking-wide uppercase">{s.label}</span>
+                          <span className="text-[9px] font-mono text-red-400">PAIN {s.n}</span>
                         </div>
-                        <p className="text-[11px] text-white/40 mt-1.5 leading-relaxed">{s.detail}</p>
+                        <p className="text-[11px] text-white/40 mt-2 leading-relaxed font-sans">{s.detail}</p>
                       </div>
                     </TiltCard>
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* The cost of inaction sub-grid */}
+            <div className="lg:col-span-2 border-t border-white/[0.04] pt-16 mt-16">
+              <div className="mb-8">
+                <SectionLabel text="The Cost of Inaction" color="red" />
+                <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-xl text-white uppercase mt-2">Every day you delay costs you opportunities</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                {[
+                  { icon: <Clock className="w-4 h-4" />, t: 'Recruiters Move On', d: 'Top recruiters finalise shortlists within 72 hours of posting.' },
+                  { icon: <Briefcase className="w-4 h-4" />, t: 'Listings Expire', d: 'High-traffic corporate roles close when application counts exceed 200.' },
+                  { icon: <Globe className="w-4 h-4" />, t: 'Networks Go Cold', d: 'Referral leads expire when internal teams fill roles or headcount freezes.' },
+                  { icon: <BarChart3 className="w-4 h-4" />, t: 'Pipelines Empty', d: 'Pausing applications during active loops leaves zero backups.' },
+                  { icon: <TrendingUp className="w-4 h-4" />, t: 'Confidence Drops', d: 'Repeated rejection cycles damage performance in active interviews.' },
+                ].map((c, i) => (
+                  <div key={i} className="js-cost-card glass-ultra rounded-xl p-4 border border-white/[0.04] hover:border-red-500/15 transition-colors">
+                    <div className="text-red-400 mb-2">{c.icon}</div>
+                    <h4 className="font-['Barlow_Semi_Condensed'] font-bold text-[10px] text-white uppercase tracking-wider mb-1.5">{c.t}</h4>
+                    <p className="text-[10px] text-white/35 leading-relaxed font-sans">{c.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
         <div className="section-divider" />
 
-        {/* ══ SECTION 3 · COST OF DELAY ═══════════════════════════════════════ */}
-        <section id="cost" className="relative py-36 px-6 overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-2xl mb-20">
-              <SectionLabel text="The Hidden Cost" color="red" />
+        {/* ══ SECTION 3 · MEET CAREER GPS ════════════════════════════════════ */}
+        <section id="careergps" className="relative py-36 px-6 overflow-hidden">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            <div className="space-y-8">
+              <SectionLabel text="System Diagnostic" color="green" />
               <div className="overflow-hidden">
                 <SectionH2>
-                  <span className="js-reveal-title block">Every day you delay</span>
-                  <span className="js-reveal-title block text-white/55 mt-1">costs you opportunities.</span>
+                  <span className="js-reveal-title block">Meet Crafture</span>
+                  <span className="js-reveal-title block text-[#10b981] mt-1">Career GPS™.</span>
                 </SectionH2>
               </div>
-              <p className="mt-6 text-white/45 font-sans text-base leading-[1.7]">
-                While you manually write resumes and wait for responses, live listings close. The compounding cost of inaction is larger than most people calculate.
+              <p className="text-white/50 font-sans text-[1.02rem] leading-[1.72] max-w-md">
+                Career GPS™ is your automated diagnostic engine. It continuously runs scans across your entire candidate profile, identifying the silent blockers keeping you from interviews.
               </p>
+              
+              {/* Dimensions list */}
+              <div className="space-y-4">
+                {[
+                  { t: 'Career Health Score', d: 'An index of your active pipeline strength and market value.' },
+                  { t: 'Candidate Strengths', d: 'Identifies high-value skills and matching vectors where you excel.' },
+                  { t: 'Blockers & Weaknesses', d: 'Flags resume format faults, keyword gaps, and bad search SEO.' },
+                  { t: 'Missing Opportunities', d: 'Exposes hidden job markets and direct manager connections.' },
+                  { t: 'Personalized Roadmap', d: 'A step-by-step checklist customized to your target job search.' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-3.5 items-start">
+                    <div className="w-5 h-5 rounded-full bg-[#10b981]/10 border border-[#10b981]/20 flex items-center justify-center text-[#10b981] font-mono text-[9px] font-bold mt-1">
+                      {idx + 1}
+                    </div>
+                    <div>
+                      <h4 className="font-['Barlow_Semi_Condensed'] font-bold text-[12px] text-white uppercase tracking-wide">{item.t}</h4>
+                      <p className="text-[11px] text-white/40 leading-relaxed font-sans">{item.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4">
+                <a href="https://carrer-gps-asess.onrender.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="btn-shimmer btn-magnetic inline-block bg-[#10b981] text-black font-['Barlow_Semi_Condensed'] font-extrabold text-[11px] uppercase tracking-[0.14em] px-8 py-4 rounded-full"
+                   style={{ boxShadow: '0 8px 30px rgba(16,185,129,0.2)' }}>
+                  Start Free Assessment
+                </a>
+              </div>
             </div>
 
-            <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5" style={{ perspective: '1000px' }}>
-              {[
-                { icon: <Clock className="w-5 h-5" />, t: 'Recruiters Move On', d: 'Top recruiters finalise shortlists within 72 hours of posting. Late applications get filtered before a human reads them.' },
-                { icon: <Briefcase className="w-5 h-5" />, t: 'Listings Expire', d: 'High-traffic corporate roles close automatically when application counts exceed 200. The window is shorter than you think.' },
-                { icon: <Globe className="w-5 h-5" />, t: 'Networks Go Cold', d: 'Referral leads expire when internal teams fill roles or headcount freezes mid-quarter without announcement.' },
-                { icon: <BarChart3 className="w-5 h-5" />, t: 'Pipelines Empty', d: 'Pausing applications during an active interview leaves zero backup options when that loop ends without an offer.' },
-                { icon: <TrendingUp className="w-5 h-5" />, t: 'Confidence Drops', d: 'Repeated rejection cycles with no alternative pipeline damage performance at the very screens you prepared for.' },
-              ].map((c, i) => (
-                <div key={i} className="js-cost-card">
-                  <TiltCard>
-                    <div className="glass-ultra rounded-2xl p-6 h-full flex flex-col gap-5 border border-white/[0.05] hover:border-red-500/20 transition-colors min-h-[220px]">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-red-400 shrink-0"
-                           style={{ background: 'rgba(239,68,68,0.06)' }}>
-                        {c.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[12px] text-white uppercase tracking-wide mb-2">{c.t}</h3>
-                        <p className="text-[11px] text-white/40 leading-relaxed">{c.d}</p>
-                      </div>
-                    </div>
-                  </TiltCard>
+            {/* Right: 3D Dials Diagnostic visualization */}
+            <div className="relative flex justify-center" style={{ perspective: '1200px' }}>
+              <TiltCard maxTilt={5}>
+                <div className="relative w-[340px] h-[340px] sm:w-[380px] sm:h-[380px] rounded-full border border-white/[0.04] bg-white/[0.01] flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transform-style-3d">
+                  
+                  {/* Central glowing health score */}
+                  <div className="relative z-10 w-36 h-36 rounded-full bg-black/60 border border-white/10 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(16,185,129,0.15)]">
+                    <span className="text-[9px] font-mono text-[#10b981]/50 tracking-wider">HEALTH SCORE</span>
+                    <span id="diagnostic-score-num" className="text-4xl font-['Barlow_Semi_Condensed'] font-extrabold text-white mt-1">0%</span>
+                    <span className="text-[8px] font-mono text-white/20 mt-1">CALIBRATED</span>
+                  </div>
+
+                  {/* Concentric Rotating Ring 1 */}
+                  <div className="js-diagnostic-ring-1 absolute inset-4 rounded-full border-2 border-dashed border-[#10b981]/15 pointer-events-none" />
+                  
+                  {/* Concentric Rotating Ring 2 */}
+                  <div className="js-diagnostic-ring-2 absolute inset-10 rounded-full border border-dashed border-blue-500/12 pointer-events-none" />
+                  
+                  {/* Concentric Rotating Ring 3 */}
+                  <div className="js-diagnostic-ring-3 absolute inset-16 rounded-full border-2 border-dotted border-white/5 pointer-events-none" />
+
+                  {/* Floating Metric tag 1 */}
+                  <div className="js-metric-tag absolute top-10 right-4 p-3 rounded-lg border border-[#10b981]/15 bg-black/50 text-[10px] font-mono text-left space-y-1" style={{ transform: 'translateZ(30px)', opacity: 0 }}>
+                    <div className="text-white/25">ATS STATUS</div>
+                    <div className="text-[#10b981] font-bold">88% MATCH OPTIMAL</div>
+                  </div>
+
+                  {/* Floating Metric tag 2 */}
+                  <div className="js-metric-tag absolute bottom-12 left-2 p-3 rounded-lg border border-blue-500/15 bg-black/50 text-[10px] font-mono text-left space-y-1" style={{ transform: 'translateZ(40px)', opacity: 0 }}>
+                    <div className="text-white/25">LINKEDIN SEO</div>
+                    <div className="text-blue-400 font-bold">TOP 5% INQUIRIES</div>
+                  </div>
+
+                  {/* Floating Metric tag 3 */}
+                  <div className="js-metric-tag absolute bottom-8 right-6 p-2 rounded-lg border border-white/10 bg-black/50 text-[9px] font-mono text-left" style={{ transform: 'translateZ(25px)', opacity: 0 }}>
+                    <div className="text-white/35">Roadmap: Calibrated</div>
+                  </div>
+
                 </div>
-              ))}
+              </TiltCard>
             </div>
+
           </div>
         </section>
 
-        <div className="section-divider" />
+
 
         {/* ══ SECTION 4 · BENTO GRID FEATURES ═════════════════════════════════ */}
         <section id="features" className="relative py-36 px-6 overflow-hidden">
           <div className="max-w-7xl mx-auto">
             
             <div className="max-w-3xl mb-20">
-              <SectionLabel text="Bento Grid" />
+              <SectionLabel text="All-In-One Platform" />
               <div className="overflow-hidden">
                 <SectionH2>
-                  <span className="js-reveal-title block">Futuristic modules built</span>
-                  <span className="js-reveal-title block text-[#10b981] mt-1">for career command.</span>
+                  <span className="js-reveal-title block">One cohesive system</span>
+                  <span className="js-reveal-title block text-[#10b981] mt-1">instead of 10 disconnected tools.</span>
                 </SectionH2>
               </div>
               <p className="mt-5 text-white/45 font-sans text-base leading-[1.7] max-w-xl">
-                Every single piece of our dashboard is dynamic, frosted glass, and designed to give you direct command over recruiter pipelines.
+                Stop paying for separate resume builders, ATS scanners, tracking sheets, and outreach bots. Career GPS™ unites every single component into one unified operating system.
               </p>
             </div>
 
             {/* Bento Grid Panel */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5" style={{ perspective: '1200px' }}>
               
-              {/* Cell 1: Double Width (Bento Core ATS Scanner) */}
+              {/* Cell 1: Double Width (ATS Analyzer & Resume Optimization) */}
               <div className="js-feat-card md:col-span-8">
-                <TiltCard maxTilt={4}>
+                <TiltCard maxTilt={3}>
                   <div className="glass-ultra rounded-2xl p-8 flex flex-col md:flex-row justify-between items-start gap-8 min-h-[300px] border border-white/[0.05] hover:border-[#10b981]/15 transition-all">
                     <div className="max-w-xs space-y-4">
                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#10b981]"><FileSearch className="w-5.5 h-5.5" /></div>
-                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">ATS Analyzer & Optimizer</h3>
-                      <p className="text-[11px] text-white/40 leading-relaxed">Instant parsing simulator identifies format faults, keywords gap, and semantic alignment against USA target jobs.</p>
+                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">ATS Analyzer & Resume Optimization</h3>
+                      <p className="text-[11px] text-white/40 leading-relaxed">Instant parsing simulator identifies format faults, keyword gaps, and semantic alignment against USA target jobs. Keeps your resume tailored continuously.</p>
                     </div>
                     {/* Live preview visual inside bento */}
                     <div className="w-full md:w-[280px] p-4 rounded-xl border border-white/5 bg-black/40 text-left font-mono text-[9px] text-white/40 space-y-2">
                       <div className="flex justify-between text-white/20 pb-1.5 border-b border-white/5 mb-1">
                         <span>analyzing_resume.docx</span>
-                        <span className="text-[#10b981] font-bold">MATCH ACTIVE</span>
+                        <span className="text-[#10b981] font-bold">92% MATCH</span>
                       </div>
                       <div className="flex justify-between items-center text-white/70">
-                        <span>[x] Tailor leadership metrics</span>
+                        <span>[x] Injected: "Micro-frontends"</span>
                         <Check className="w-3 h-3 text-[#10b981]" />
                       </div>
-                      <div className="flex justify-between items-center text-white/70 animate-pulse">
-                        <span>[ ] Align target keywords</span>
-                        <RefreshCw className="w-2.5 h-2.5 text-[#10b981] animate-spin" />
+                      <div className="flex justify-between items-center text-white/70">
+                        <span>[x] Formatted: ATS-Friendly Header</span>
+                        <Check className="w-3 h-3 text-[#10b981]" />
                       </div>
                       <div className="h-1 bg-white/5 rounded-full overflow-hidden mt-1">
-                        <div className="h-full bg-[#10b981] w-[65%]" />
+                        <div className="h-full bg-[#10b981] w-[92%]" />
                       </div>
                     </div>
                   </div>
@@ -517,51 +548,53 @@ export default function App() {
 
               {/* Cell 2: Single Width (LinkedIn SEO) */}
               <div className="js-feat-card md:col-span-4">
-                <TiltCard maxTilt={5}>
+                <TiltCard maxTilt={4}>
                   <div className="glass-ultra rounded-2xl p-8 flex flex-col justify-between min-h-[300px] border border-white/[0.05] hover:border-[#10b981]/15 transition-all">
                     <div className="space-y-4">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#0077b5]"><Linkedin className="w-5.5 h-5.5" /></div>
-                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">LinkedIn SEO Engine</h3>
-                      <p className="text-[11px] text-white/40 leading-relaxed">Syncs search optimization clusters to target active recruiter inquiries automatically.</p>
+                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-blue-400"><Linkedin className="w-5.5 h-5.5" /></div>
+                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">LinkedIn SEO & Networking</h3>
+                      <p className="text-[11px] text-white/40 leading-relaxed">Syncs search optimization clusters to target active recruiter queries automatically, doubling search impressions.</p>
                     </div>
                     <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex items-center justify-between text-[11px]">
-                      <span className="text-white/60">Profile Reach</span>
-                      <span className="text-[#10b981] font-bold font-mono">+142%</span>
+                      <span className="text-white/60">Recruiter Impressions</span>
+                      <span className="text-[#10b981] font-bold font-mono">+248%</span>
                     </div>
                   </div>
                 </TiltCard>
               </div>
 
-              {/* Cell 3: Single Width (Salary Intelligence) */}
+              {/* Cell 3: Single Width (AI Job Search Automation) */}
               <div className="js-feat-card md:col-span-4">
-                <TiltCard maxTilt={5}>
+                <TiltCard maxTilt={4}>
                   <div className="glass-ultra rounded-2xl p-8 flex flex-col justify-between min-h-[300px] border border-white/[0.05] hover:border-[#10b981]/15 transition-all">
                     <div className="space-y-4">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#10b981]"><Target className="w-5.5 h-5.5" /></div>
-                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">Salary Intelligence</h3>
-                      <p className="text-[11px] text-white/40 leading-relaxed">Continuous salary mapping flags under-compensated leads before final screens are booked.</p>
+                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#10b981]"><Send className="w-5.5 h-5.5" /></div>
+                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">Job Search & Outreach</h3>
+                      <p className="text-[11px] text-white/40 leading-relaxed">Background scraper scans corporate portals, maps hiring managers, and sends outbound templates 24/7.</p>
                     </div>
-                    <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-[#10b981] to-[#3b82f6] w-[80%]" />
+                    <div className="p-2.5 bg-black/40 border border-white/5 rounded-lg text-[9px] font-mono space-y-1">
+                      <div className="text-white/30">OUTBOUND STATUS:</div>
+                      <div className="text-white/70">Sent email to Netflix Principal Dev...</div>
+                      <div className="text-[#10b981] font-bold">Response: Booking Call</div>
                     </div>
                   </div>
                 </TiltCard>
               </div>
 
-              {/* Cell 4: Double Width (Interview Readiness Lab) */}
+              {/* Cell 4: Double Width (Interview Preparation & Mock Lab) */}
               <div className="js-feat-card md:col-span-8">
-                <TiltCard maxTilt={4}>
+                <TiltCard maxTilt={3}>
                   <div className="glass-ultra rounded-2xl p-8 flex flex-col md:flex-row justify-between items-start gap-8 min-h-[300px] border border-white/[0.05] hover:border-[#10b981]/15 transition-all">
                     <div className="max-w-xs space-y-4">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-blue-400"><FlaskConical className="w-5.5 h-5.5" /></div>
-                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">Interview Readiness Lab</h3>
-                      <p className="text-[11px] text-white/40 leading-relaxed">Generates real interactive mock interview scenarios built from the JD. Tracks answer velocity and response match indicators.</p>
+                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-blue-400"><Compass className="w-5.5 h-5.5" /></div>
+                      <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[15px] text-white uppercase tracking-wide">Interview Prep & Mock Lab</h3>
+                      <p className="text-[11px] text-white/40 leading-relaxed">Generates real interactive mock interview scenarios built from target JD descriptions. Analyzes STAR structure and response velocity.</p>
                     </div>
                     <div className="w-full md:w-[260px] p-3 rounded-lg border border-white/5 bg-black/40 text-left font-mono text-[9px] text-[#10b981] space-y-1.5">
-                      <span className="text-white/25">[MOCK RESPONSE FEEDBACK]</span>
-                      <p className="text-white/60">"Explain a time when you optimized a slow rendering application..."</p>
+                      <span className="text-white/25">[MOCK INTERVIEW ANALYSIS]</span>
+                      <p className="text-white/60">"Describe how you handle state sync across multiple tabs..."</p>
                       <div className="bg-white/3 border border-white/5 rounded p-2 text-white/40">
-                        Match strength: 91% · Tone: Confident
+                        STAR Structure: Valid (94%) · Velocity: Normal
                       </div>
                     </div>
                   </div>
@@ -667,54 +700,7 @@ export default function App() {
           </div>
         </section>
 
-        <div className="section-divider" />
 
-        {/* ══ SECTION 6 · AI TEAM HORIZONTAL SCROLL (Existing, elevated glass) ═ */}
-        <div ref={aiTriggerRef} className="relative overflow-hidden" style={{ background: 'rgba(4,6,4,0.3)' }}>
-          <section id="ai-team" className="min-h-screen flex flex-col justify-center px-6 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto w-full mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <div className="space-y-4">
-                <SectionLabel text="AI Team" />
-                <div className="overflow-hidden">
-                  <SectionH2>
-                    <span className="js-reveal-title block">While you focus on interviews,</span>
-                    <span className="js-reveal-title block text-[#10b981]">your AI team keeps working.</span>
-                  </SectionH2>
-                </div>
-              </div>
-              <p className="text-white/30 text-[12px] font-sans max-w-xs leading-relaxed">Scroll to meet the 8 specialised agents running your background campaign 24/7.</p>
-            </div>
-
-            <div ref={aiContainerRef} className="flex gap-5 items-stretch w-max pb-10 pr-20 pl-[4%]">
-              {aiAgents.map((a, i) => (
-                <div key={i} className="w-[300px] md:w-[330px] shrink-0">
-                  <TiltCard>
-                    <div className="glass-ultra rounded-2xl p-7 flex flex-col justify-between border border-white/[0.06] hover:border-[#10b981]/18 transition-all h-full min-h-[280px]">
-                      <div>
-                        <div className="flex items-center gap-3 mb-6">
-                          <div className="w-9 h-9 rounded-xl flex items-center justify-center text-[#10b981]" style={{ background: 'rgba(16,185,129,0.08)' }}>{a.icon}</div>
-                          <span className="text-[9px] font-mono text-[#10b981]/55">AGENT_{a.id} · ONLINE</span>
-                        </div>
-                        <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[14px] text-white uppercase tracking-wide mb-3">{a.title}</h3>
-                        <p className="text-[11px] text-white/42 leading-relaxed">{a.desc}</p>
-                      </div>
-                      <div className="mt-8 flex items-center justify-between text-[9px] font-['Barlow_Semi_Condensed'] font-bold text-white/20 pt-4 border-t border-white/[0.05]">
-                        <span>STATUS: ACTIVE</span>
-                        <Zap className="w-3 h-3 text-[#10b981] animate-pulse" />
-                      </div>
-                    </div>
-                  </TiltCard>
-                </div>
-              ))}
-            </div>
-
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-['Barlow_Semi_Condensed'] text-white/12 tracking-widest uppercase">
-              We configure every agent for you — no setup required
-            </div>
-          </section>
-        </div>
-
-        <div className="section-divider" />
 
         {/* ══ SECTION 7 · HUMAN SUPPORT (glassmorphic grid update) ══════════════ */}
         <section id="human" className="relative py-36 px-6 overflow-hidden">
@@ -723,13 +709,12 @@ export default function App() {
               <SectionLabel text="Human + AI" />
               <div className="overflow-hidden">
                 <SectionH2>
-                  <span className="js-reveal-title block">Need more than</span>
-                  <span className="js-reveal-title block">automation?</span>
-                  <span className="js-reveal-title block text-[#10b981] mt-1">We cover that too.</span>
+                  <span className="js-reveal-title block">When AI</span>
+                  <span className="js-reveal-title block text-[#10b981] mt-1">Isn't Enough.</span>
                 </SectionH2>
               </div>
               <p className="text-white/48 font-sans text-base leading-[1.72]">
-                AI manages volume and consistency. Human experts handle strategy, nuance, and the high-touch moments that close offers.
+                AI automates repetitive work. Human experts provide strategy, accountability, and interview coaching. Together they deliver better results.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
@@ -754,44 +739,38 @@ export default function App() {
             </div>
 
             <div>
-              <div className="glass-ultra rounded-2xl p-10 border border-white/[0.06] space-y-8">
-                {[
-                  { icon: <Zap className="w-5 h-5 text-[#10b981]" />, val: 'Up to 100', label: 'AI applications per day', sub: 'Precision-targeted. 85%+ match threshold enforced.' },
-                  { icon: <Users className="w-5 h-5 text-blue-400" />, val: 'Dedicated', label: 'US-based consultant', sub: 'Direct access — not a shared support queue.' },
-                  { icon: <Calendar className="w-5 h-5 text-[#10b981]" />, val: 'Weekly', label: 'Interview review sessions', sub: 'Live coaching calibrated to your recruiter feedback.' },
-                ].map((s, i) => (
-                  <div key={i} className={`flex gap-5 items-start ${i > 0 ? 'border-t border-white/[0.05] pt-8' : ''}`}>
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                      {s.icon}
-                    </div>
-                    <div>
-                      <div className="font-['Barlow_Semi_Condensed'] font-extrabold text-2xl text-white">
-                        {s.val} <span className="text-[13px] font-bold text-white/50">{s.label}</span>
+              <TiltCard maxTilt={3}>
+                <div className="glass-ultra rounded-2xl p-10 border border-white/[0.06] space-y-8">
+                  {[
+                    { icon: <Zap className="w-5 h-5 text-[#10b981]" />, val: 'Up to 100', label: 'AI applications per day', sub: 'Precision-targeted. 85%+ match threshold enforced.' },
+                    { icon: <Users className="w-5 h-5 text-blue-400" />, val: 'Dedicated', label: 'US-based consultant', sub: 'Direct access — not a shared support queue.' },
+                    { icon: <Calendar className="w-5 h-5 text-[#10b981]" />, val: 'Weekly', label: 'Interview review sessions', sub: 'Live coaching calibrated to your recruiter feedback.' },
+                  ].map((s, i) => (
+                    <div key={i} className={`flex gap-5 items-start ${i > 0 ? 'border-t border-white/[0.05] pt-8' : ''}`}>
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                        {s.icon}
                       </div>
-                      <p className="text-[11px] text-white/32 mt-1">{s.sub}</p>
+                      <div>
+                        <div className="font-['Barlow_Semi_Condensed'] font-extrabold text-2xl text-white">
+                          {s.val} <span className="text-[13px] font-bold text-white/50">{s.label}</span>
+                        </div>
+                        <p className="text-[11px] text-white/32 mt-1">{s.sub}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </TiltCard>
             </div>
           </div>
-        </section>
 
-        <div className="section-divider" />
-
-        {/* ══ SECTION 8 · COMPARISON TABLE ════════════════════════════════════ */}
-        <section id="comparison" className="relative py-28 px-6 overflow-hidden">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
+          {/* Unified Comparison Block */}
+          <div className="lg:col-span-2 border-t border-white/[0.04] pt-20 mt-20">
+            <div className="text-center mb-12">
               <SectionLabel text="Why Different" />
-              <div className="overflow-hidden">
-                <SectionH2>
-                  <span className="js-reveal-title block">Why Career GPS™ is different</span>
-                </SectionH2>
-              </div>
-              <p className="mt-5 text-white/38 text-[13px] font-sans">More than a course. More than a consultancy. More than just AI.</p>
+              <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-2xl text-white uppercase mt-2">Why Career GPS™ is different</h3>
+              <p className="mt-3 text-white/35 text-[11px] font-sans">More than a course. More than a consultancy. More than just AI.</p>
             </div>
-
+            
             <div className="glass-ultra rounded-2xl overflow-hidden border border-white/[0.06]">
               <div className="grid grid-cols-3 gap-4 px-7 py-4 border-b border-white/[0.05] text-[9px] font-['Barlow_Semi_Condensed'] font-bold uppercase tracking-widest text-white/28"
                    style={{ background: 'rgba(255,255,255,0.02)' }}>
@@ -818,9 +797,10 @@ export default function App() {
               ))}
             </div>
           </div>
+
         </section>
 
-        <div className="section-divider" />
+
 
         {/* ══ SECTION 9 · PRICING ══════════════════════════════════════════════ */}
         <section id="pricing" className="relative py-36 px-6 overflow-hidden">
@@ -867,7 +847,10 @@ export default function App() {
                         ))}
                       </div>
                     </div>
-                    <a href="#" className="mt-8 w-full block text-center py-3 rounded-full border border-white/[0.1] text-[11px] font-['Barlow_Semi_Condensed'] font-bold uppercase tracking-wider text-white/70 hover:bg-white/[0.05] hover:text-white transition-all">
+                    <a href="https://carrer-gps-asess.onrender.com/"
+                       target="_blank"
+                       rel="noopener noreferrer" 
+                       className="mt-8 w-full block text-center py-3 rounded-full border border-[#10b981]/25 text-[11px] font-['Barlow_Semi_Condensed'] font-bold uppercase tracking-wider text-[#10b981] hover:bg-[#10b981]/10 transition-all">
                       Run Free Scan
                     </a>
                   </div>
@@ -877,7 +860,7 @@ export default function App() {
               {/* AI Plan — Popular */}
               <div className="js-price-card">
                 <TiltCard>
-                  <div className="gradient-border-card rounded-2xl p-8 flex flex-col justify-between min-h-[580px] relative overflow-hidden h-full"
+                  <div className="glass-ultra rounded-2xl p-8 flex flex-col justify-between min-h-[580px] relative overflow-hidden h-full border border-[#10b981]/30 hover:border-[#10b981]/60 transition-colors"
                        style={{ boxShadow: '0 0 70px rgba(16,185,129,0.15), 0 30px 60px rgba(0,0,0,0.5)' }}>
                     <div className="absolute top-0 right-0 bg-[#10b981] text-black font-['Barlow_Semi_Condensed'] font-extrabold text-[8px] uppercase tracking-widest px-4 py-1.5 rounded-bl-xl z-10">
                       Most Popular
@@ -899,7 +882,9 @@ export default function App() {
                         ))}
                       </div>
                     </div>
-                    <a href="#"
+                    <a href="https://superprofile.bio/vp/6a46b68049a6e500138a886a"
+                       target="_blank"
+                       rel="noopener noreferrer"
                        className="btn-shimmer mt-8 w-full block text-center py-4 rounded-full bg-[#10b981] text-black font-['Barlow_Semi_Condensed'] font-extrabold text-[11px] uppercase tracking-widest z-10 hover:scale-[1.02] transition-all"
                        style={{ boxShadow: '0 8px 32px rgba(16,185,129,0.4)' }}>
                       Start AI Plan
@@ -928,7 +913,10 @@ export default function App() {
                         ))}
                       </div>
                     </div>
-                    <a href="#" className="mt-8 w-full block text-center py-3 rounded-full border border-blue-500/25 text-[11px] font-['Barlow_Semi_Condensed'] font-bold uppercase tracking-wider text-blue-400 hover:bg-blue-500/[0.07] transition-all">
+                    <a href="https://superprofile.bio/vp/6a46baf515e3cc0013660b1e"
+                       target="_blank"
+                       rel="noopener noreferrer" 
+                       className="mt-8 w-full block text-center py-3 rounded-full border border-blue-500/25 text-[11px] font-['Barlow_Semi_Condensed'] font-bold uppercase tracking-wider text-blue-400 hover:bg-blue-500/[0.07] transition-all">
                       Get Human + AI
                     </a>
                   </div>
@@ -951,11 +939,11 @@ export default function App() {
               <SectionLabel text="Process" />
               <div className="overflow-hidden">
                 <SectionH2>
-                  <span className="js-reveal-title block">Five steps.</span>
+                  <span className="js-reveal-title block">Four steps.</span>
                   <span className="js-reveal-title block text-[#10b981]">Then we take over.</span>
                 </SectionH2>
               </div>
-              <p className="mt-6 text-white/42 font-sans text-base leading-[1.7]">You do the setup. We handle execution continuously until you sign an offer.</p>
+              <p className="mt-6 text-white/42 font-sans text-base leading-[1.7]">Start with a free assessment, select your strategy, and launch your automated candidate pipeline.</p>
             </div>
 
             <div className="relative pl-11 mt-14">
@@ -966,13 +954,12 @@ export default function App() {
                 </div>
               </div>
               {[
-                { t: 'Run your free Career Analysis', d: 'Upload your profile. We generate a full diagnostic: ATS score, keyword gaps, salary benchmarks, and market positioning.' },
-                { t: 'Review your personalised report', d: 'Get a structured breakdown of exactly what to fix, in priority order, with market comparison data for context.' },
-                { t: 'Choose your plan', d: 'Activate AI agents only, or add a dedicated human consultant for senior roles and high-stakes negotiations.' },
-                { t: 'We build and launch everything', d: 'We configure every agent, write your templates, tune your LinkedIn, and launch outbound campaigns. You approve the targeting.' },
-                { t: 'We run until you get hired', d: "AI maintains daily volume. Human coaches tune strategy weekly. The system doesn't stop until you sign." },
+                { t: 'Take FREE Career GPS Assessment', d: 'Upload your profile. We scan your resume formatting, ATS parsing indicators, and LinkedIn search searchability in 3 minutes.' },
+                { t: 'Receive Personalized Career Report', d: 'Get a structured breakdown detailing your Career Health Score, strengths, parsing errors, keyword gaps, and targeted market openings.' },
+                { t: 'Choose Your Plan', d: 'Select our configured AI agents or add a dedicated US-based recruiter for interview prep, custom negotiation, and strategic outreach.' },
+                { t: 'Start Landing More Interviews', d: 'We configure every background pipeline. Our AI engines run continuously, and human coaches sync weekly to close offers. We do not stop until you get hired.' },
               ].map((s, i) => (
-                <div key={i} className="relative mb-12 last:mb-0">
+                <div key={i} className="js-timeline-step relative mb-12 last:mb-0" style={{ perspective: '1000px' }}>
                   <div className="absolute -left-[38px] top-2 w-[22px] h-[22px] rounded-full border border-white/12 flex items-center justify-center z-10 text-[9px] font-['Barlow_Semi_Condensed'] font-bold text-white/30 hover:border-[#10b981] transition-colors"
                        style={{ background: '#050505' }}>
                     {i + 1}
@@ -981,6 +968,50 @@ export default function App() {
                     <div className="glass-ultra rounded-xl p-6 border border-white/[0.05] hover:border-[#10b981]/14 transition-colors">
                       <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[13px] text-white uppercase tracking-wide">{s.t}</h3>
                       <p className="text-[11px] text-white/42 mt-2.5 leading-relaxed">{s.d}</p>
+                    </div>
+                  </TiltCard>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="section-divider" />
+
+        {/* ══ SECTION 9 · COMMUNITY ════════════════════════════════════════════ */}
+        <section id="community" className="relative py-36 px-6 overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mb-20">
+              <SectionLabel text="Community" color="green" />
+              <div className="overflow-hidden">
+                <SectionH2>
+                  <span className="js-reveal-title block">Join the Crafture</span>
+                  <span className="js-reveal-title block text-[#10b981] mt-1">community.</span>
+                </SectionH2>
+              </div>
+              <p className="mt-6 text-white/45 font-sans text-base leading-[1.7]">
+                Connect with thousands of USA IT and Non-IT professionals and experts. Learn what is working in active job markets right now.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" style={{ perspective: '1000px' }}>
+              {[
+                { icon: <Users className="w-5 h-5" />, t: 'Weekly Sessions', d: 'Live Q&A sessions with coaches and recruitment specialists discussing current hiring loops.' },
+                { icon: <FileText className="w-5 h-5" />, t: 'Resume Reviews', d: 'Get actionable, direct peer feedback and coach diagnostics on your optimized resume files.' },
+                { icon: <TrendingUp className="w-5 h-5" />, t: 'Hiring Trends', d: 'Real-time indexes of active US tech headcount freezes, updates, and open hiring windows.' },
+                { icon: <Lock className="w-5 h-5" />, t: 'Free Resources', d: 'Instant access to cold message swipe files, negotiation templates, and salary benchmarking datasets.' },
+              ].map((c, i) => (
+                <div key={i} className="js-community-card">
+                  <TiltCard>
+                    <div className="glass-ultra rounded-2xl p-6 h-full flex flex-col justify-between border border-white/[0.05] hover:border-[#10b981]/20 transition-colors min-h-[220px]">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-[#10b981] shrink-0 mb-5"
+                           style={{ background: 'rgba(16,185,129,0.06)' }}>
+                        {c.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-['Barlow_Semi_Condensed'] font-bold text-[12px] text-white uppercase tracking-wide mb-2">{c.t}</h3>
+                        <p className="text-[11px] text-white/40 leading-relaxed font-sans">{c.d}</p>
+                      </div>
                     </div>
                   </TiltCard>
                 </div>
@@ -1030,18 +1061,19 @@ export default function App() {
           <div className="js-cta-text max-w-4xl mx-auto relative z-10 space-y-8">
             <SectionLabel text="Get Started" />
             <SectionH2>
-              Your next opportunity<br />
-              shouldn't have to wait<br />
-              <span className="text-[#10b981]">until tomorrow morning.</span>
+              Ready to<br />
+              <span className="text-[#10b981]">Stop Guessing?</span>
             </SectionH2>
             <p className="text-white/45 font-sans text-[clamp(1rem,1.8vw,1.15rem)] max-w-xl mx-auto leading-[1.72]">
-              Build a job search system that keeps moving — even while you sleep. Start with a free Career Health Analysis today.
+              Everything between you and your next U.S. job is finally in one place.
             </p>
             <div className="pt-2 flex flex-col items-center gap-4">
-              <a href="#pricing"
+              <a href="https://carrer-gps-asess.onrender.com/"
+                 target="_blank"
+                 rel="noopener noreferrer"
                  className="btn-shimmer btn-magnetic inline-block bg-[#10b981] text-black font-['Barlow_Semi_Condensed'] font-extrabold text-[12px] uppercase tracking-[0.16em] px-12 py-5 rounded-full hover:scale-[1.03] transition-all"
                  style={{ boxShadow: '0 8px 50px rgba(16,185,129,0.4), 0 0 0 1px rgba(16,185,129,0.2)' }}>
-                Start Free Career GPS Analysis →
+                Start Your FREE Career GPS Assessment →
               </a>
               <p className="text-[10px] text-white/20 font-['Barlow_Semi_Condensed'] tracking-widest uppercase">Free · No credit card · Takes 3 minutes</p>
             </div>
@@ -1060,7 +1092,7 @@ export default function App() {
               <span className="font-extrabold text-white/55 tracking-[-0.01em] text-[13px]">CAREER GPS™</span>
             </div>
             <nav className="flex flex-wrap justify-center gap-6 text-white/32 uppercase tracking-[0.1em]">
-              {[['#problem','Problem'],['#features','System'],['#ai-team','AI Team'],['#human','Human+AI'],['#pricing','Pricing'],['#faq','FAQ']].map(([h,l]) => (
+              {[['#problem','Problem'],['#careergps','Career GPS'],['#features','System'],['#human','Human+AI'],['#pricing','Pricing'],['#community','Community'],['#faq','FAQ']].map(([h,l]) => (
                 <a key={h} href={h} className="hover:text-white transition-colors">{l}</a>
               ))}
             </nav>
