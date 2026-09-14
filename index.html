@@ -1,24 +1,181 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Career GPS™ | Your Personal Job Search Operating System</title>
-    
-    <!-- Meta tags for SEO -->
-    <meta name="description" content="Career GPS™ is a premium staffing consultancy helping USA professionals apply for jobs using AI automation and human expertise. Keep your job search working 24/7." />
-    <meta name="keywords" content="Career GPS, job search automation, AI resume optimization, staffing consultancy, automated job application" />
-    <meta name="author" content="Career GPS Team" />
-    
-    <!-- Google Fonts: Barlow Semi Condensed (display) + Manrope (body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#050505] text-white selection:bg-[#10b981]/30 selection:text-white overflow-x-hidden antialiased">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, viewport-fit=cover" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Career GPS™ | Your Personal AI Job Search Operating System</title>
+  <meta name="title" content="Career GPS™ | Your Personal AI Job Search Operating System" />
+  <meta name="description" content="Career GPS™ is an AI-powered Career Operating System helping U.S. professionals land offers faster. Automate ATS-optimized applications, scale recruiter outreach, and get dedicated senior recruitment coaching." />
+  <meta name="keywords" content="AI career operating system, job search automation, ATS resume scanner, AI job application, career coaching, tech recruiter outreach, salary negotiation, career GPS" />
+  <meta name="author" content="Career GPS Inc." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="canonical" href="https://careergps.io/" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://careergps.io/" />
+  <meta property="og:site_name" content="Career GPS™" />
+  <meta property="og:title" content="Career GPS™ | Your Personal AI Job Search Operating System" />
+  <meta property="og:description" content="Stop paying for fragmented AI tools. Career GPS is the all-in-one AI career operating system that automates job applications and connects you with senior US recruitment coaches." />
+  <meta property="og:image" content="/crafture-logo.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Career GPS Operating System Logo" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://careergps.io/" />
+  <meta name="twitter:title" content="Career GPS™ | Your Personal AI Job Search Operating System" />
+  <meta name="twitter:description" content="Autonomous AI job search team + dedicated recruitment coach in one unified operating system." />
+  <meta name="twitter:image" content="/crafture-logo.jpg" />
+
+  <!-- Preconnect & Google Fonts: Poppins (Headings) + Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="/crafture-logo.jpg" />
+
+  <!-- Prevent Theme Flash (FOUC) Script -->
+  <script>
+    (function() {
+      try {
+        var storedTheme = localStorage.getItem('careergps-theme');
+        var theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- ==========================================================================
+       STRUCTURED DATA (JSON-LD) FOR GOOGLE RICH SNIPPETS & AI SEARCH CRAWLERS
+       ========================================================================== -->
+  <!-- 1. SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Career GPS™",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, Cloud, All Devices",
+    "url": "https://careergps.io",
+    "description": "Career GPS™ is an AI-powered Career Operating System that identifies job search bottlenecks, automates ATS resume tailoring, and deploys autonomous agents for candidate applications.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Starter Plan",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "1 Career Health Analysis, ATS Diagnostic scan, 5 AI optimizations"
+      },
+      {
+        "@type": "Offer",
+        "name": "Career GPS AI Plan",
+        "price": "150",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M",
+        "description": "Full AI job search team (8 agents), up to 50 applications per day"
+      },
+      {
+        "@type": "Offer",
+        "name": "Elite AI + Human Plan",
+        "price": "300",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M",
+        "description": "Full AI agents plus dedicated US recruitment consultant and 1:1 coaching"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "850",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+
+  <!-- 2. Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Career GPS",
+    "url": "https://careergps.io",
+    "logo": "https://careergps.io/crafture-logo.jpg",
+    "sameAs": [
+      "https://carrer-gps-asess.onrender.com/"
+    ]
+  }
+  </script>
+
+  <!-- 3. FAQPage Schema (Rich Google SERP Accordions & AI Citation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does Career GPS automate my job applications?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Career GPS deploys an integrated fleet of autonomous agents that monitor real-time job openings across major platforms. Once a high-affinity role is matched to your background, the system dynamically analyzes the job description, recalibrates your resume bullets with semantic ATS keywords, and pre-populates application materials for high-velocity submission."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my resume pass Applicant Tracking Systems (ATS)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every resume generated by Career GPS is pre-audited against our 90-point ATS compliance benchmark. We eliminate unparseable columns, non-standard fonts, and missing semantic keywords to ensure your profile ranks in the top 5% of recruiter review dashboards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the role of the Human Consultant in the Elite plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "While our AI agents handle data analysis, formatting, and high-volume background execution, your dedicated US-based human consultant provides high-stakes strategic guidance. They lead 1:1 strategy calls, conduct realistic mock interviews, review sensitive outreach messages, and direct salary negotiations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why not buy separate AI tools like ChatGPT or resume builders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paying for separate ATS scanners, resume tailors, outreach message templates, LinkedIn indexers, and application trackers quickly adds up to hundreds of dollars a month in disconnected tools. Career GPS unites everything into a single, cohesive operating system where every piece shares data to optimize your target pipeline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Career GPS free to try?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Our Starter tier is completely free. It includes one full Career Health Analysis, an ATS diagnostic scan, 5 AI resume optimizations, and baseline salary benchmarking. It requires no credit card to start."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I upgrade or cancel later?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. You can start with our free assessment, get your report, and upgrade to the AI Plan or the Elite (AI + Human) plan whenever you are ready to launch your background job search campaigns. All plans are month-to-month and can be canceled anytime with a single click."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Clean React Mount Point -->
+  <div id="root"></div>
+
+  <!-- Vite React Entry Point -->
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
