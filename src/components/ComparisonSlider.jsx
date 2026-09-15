@@ -78,7 +78,7 @@ export default function ComparisonSlider() {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerCancel}
-          style={{ touchAction: 'none' }}
+          style={{ touchAction: 'pan-y' }}
         >
           
           {/*  Background: Without Career GPS (Manual)  */}

@@ -55,11 +55,17 @@ export default function PricingSection() {
             <div className="plan-divider"></div>
 
             <ul className="plan-features-list">
-              <li><span className="check-emerald">✓</span> 1 Career Health Analysis</li>
-              <li><span className="check-emerald">✓</span> ATS Diagnostic Scan</li>
-              <li><span className="check-emerald">✓</span> 5 AI Resume Optimisations</li>
-              <li><span className="check-emerald">✓</span> Baseline Salary Benchmarking</li>
-              <li><span className="check-emerald">✓</span> Career Score Dashboard Access</li>
+              <li><span className="check-emerald">✓</span> Career Health Report </li>
+              <li><span className="check-emerald">✓</span> Career GPS Score </li>
+              <li><span className="check-emerald">✓</span> Which phase of the job hunt the candidate is currently in </li>
+              <li><span className="check-emerald">✓</span> Primary bottleneck </li>
+              <li><span className="check-emerald">✓</span> What needs to be changed </li>
+              <li><span className="check-emerald">✓</span> How to change it </li>
+              <li><span className="check-emerald">✓</span> Personalized job-search strategies & tips </li>
+              <li><span className="check-emerald">✓</span> Which phase of the job hunt the candidate is currently in </li>
+              <li><span className="check-emerald">✓</span> 30/60/90-Day Plan </li>
+              <li><span className="check-emerald">✓</span> Free Career Coach call </li>
+              
             </ul>
 
             <div className="plan-action">
@@ -99,6 +105,7 @@ export default function PricingSection() {
               <li><span className="check-emerald">✓</span> Continuous resume & LinkedIn SEO</li>
               <li><span className="check-emerald">✓</span> Automated follow-up sequences</li>
               <li><span className="check-emerald">✓</span> Salary intelligence feed</li>
+              <li><span className="check-emerald">✓</span> Weekly Industry Expert Sessions</li>
             </ul>
 
             <div className="plan-action">
@@ -136,6 +143,7 @@ export default function PricingSection() {
               <li><span className="check-emerald">✓</span> Weekly 1-on-1 Interview Coaching</li>
               <li><span className="check-emerald">✓</span> Offer & Salary Negotiation Support</li>
               <li><span className="check-emerald">✓</span> Priority support queue</li>
+              <li><span className="check-emerald">✓</span> Weekly Industry Expert Sessions</li>
             </ul>
 
             <div className="plan-action">

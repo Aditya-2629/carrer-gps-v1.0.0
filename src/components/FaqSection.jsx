@@ -22,7 +22,7 @@ export default function FaqSection() {
     },
     {
       q: "Is Career GPS free to try?",
-      a: "Yes! Our Starter tier is completely free. It includes one full Career Health Analysis, an ATS diagnostic scan, 5 AI resume optimizations, and baseline salary benchmarking. It requires no credit card to start."
+      a: "Yes! The initial Career GPS assessment is completely FREE. Your free Career Health Report gives you a clear Score, Current Job-Hunt Phase, Primary Bottleneck, What to Change, How to Change It, Strategies & Tips, a personalized 30/60/90-Day Plan, and a Free Career Coach Call."
     },
     {
       q: "Can I upgrade or cancel later?",
