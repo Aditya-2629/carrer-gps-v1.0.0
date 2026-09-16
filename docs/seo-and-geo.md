@@ -1,4 +1,4 @@
-# Career GPS™ — SEO & Generative Engine Optimization (GEO) Manual
+# Career GPS — SEO & Generative Engine Optimization (GEO) Manual
 
 > **Objective:** Maximize visibility on Google SERPs, Bing, and AI search engines (ChatGPT Search, Perplexity AI, Google Gemini, Claude Search).
 
@@ -6,19 +6,21 @@
 
 ## 1. Structured Data (JSON-LD Schemas)
 
-Career GPS™ embeds 3 enterprise-grade JSON-LD schemas inside [`index.html`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/index.html) to enable Google Rich Snippets and accurate AI knowledge extraction.
+Career GPS embeds 3 enterprise-grade JSON-LD schemas inside [`index.html`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/index.html) to enable Google Rich Snippets and accurate AI knowledge extraction.
 
 ### 1.1 `SoftwareApplication` Schema
+
 Allows search engines to display star ratings, product category, and verified pricing directly on search result pages:
+
 ```json
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Career GPS™",
+  "name": "Career GPS",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, Cloud, All Devices",
   "url": "https://careergps.io",
-  "description": "Career GPS™ is an AI-powered Career Operating System that identifies job search bottlenecks, automates ATS resume tailoring, and deploys autonomous agents for candidate applications.",
+  "description": "Career GPS is an AI-powered Career Operating System that identifies job search bottlenecks, automates ATS resume tailoring, and deploys autonomous agents for candidate applications.",
   "offers": [
     {
       "@type": "Offer",
@@ -55,7 +57,9 @@ Allows search engines to display star ratings, product category, and verified pr
 ```
 
 ### 1.2 `Organization` Schema
+
 Establishes brand ownership, authority, and official links:
+
 ```json
 {
   "@context": "https://schema.org",
@@ -63,14 +67,14 @@ Establishes brand ownership, authority, and official links:
   "name": "Career GPS",
   "url": "https://careergps.io",
   "logo": "https://careergps.io/crafture-logo.jpg",
-  "sameAs": [
-    "https://carrer-gps-asess.onrender.com/"
-  ]
+  "sameAs": ["https://carrer-gps-asess.onrender.com/"]
 }
 ```
 
 ### 1.3 `FAQPage` Schema (High-Value AI Citation Engine)
+
 AI engines (ChatGPT, Perplexity, Gemini) query structured FAQ schemas to construct direct answers with source attribution. 6 questions with exact verbatim answers are embedded:
+
 1. **How does Career GPS automate my job applications?**
 2. **Will my resume pass Applicant Tracking Systems (ATS)?**
 3. **What is the role of the Human Consultant in the Elite plan?**
@@ -83,8 +87,9 @@ AI engines (ChatGPT, Perplexity, Gemini) query structured FAQ schemas to constru
 ## 2. On-Page Search Hierarchy & Meta Tags
 
 ### 2.1 Heading Hierarchy
+
 - **Strict Single `<h1>`:** Located in [`src/components/Hero.jsx`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/src/components/Hero.jsx):  
-  *"Everything Between You and Your Next U.S. Job — In One Place."*
+  _"Everything Between You and Your Next U.S. Job — In One Place."_
 - **Logical `<h2>` Sections:**
   - `Why The Job Search Feels Broken` (Problem Section)
   - `Your Career Health Diagnostic` (Diagnostic Section)
@@ -97,9 +102,10 @@ AI engines (ChatGPT, Perplexity, Gemini) query structured FAQ schemas to constru
   - `Frequently Asked Questions` (FAQ Section)
 
 ### 2.2 Social Metadata (Open Graph & Twitter Cards)
+
 - `og:type`: `website`
-- `og:site_name`: `Career GPS™`
-- `og:title`: `Career GPS™ | Your Personal AI Job Search Operating System`
+- `og:site_name`: `Career GPS`
+- `og:title`: `Career GPS | Your Personal AI Job Search Operating System`
 - `og:description`: High-converting summary of the autonomous AI fleet + human coach value proposition.
 - `og:image`: High-resolution logo mark (`/crafture-logo.jpg`) with dimensions `1200x630`.
 - `twitter:card`: `summary_large_image`.

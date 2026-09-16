@@ -64,10 +64,10 @@ export default function DiagnosticSection() {
               System Diagnostic
             </div>
             <h2 className="section-heading" id="diagnostic-heading">
-              Meet Crafture <span className="gradient-text">Career GPS™.</span>
+              Meet Crafture <span className="gradient-text">Career GPS.</span>
             </h2>
             <p className="section-subtext">
-              Career GPS™ is your automated diagnostic engine. It continuously runs scans across your entire candidate profile, identifying the silent blockers keeping you from interviews.
+              Career GPS is your automated diagnostic engine. It continuously runs scans across your entire candidate profile, identifying the silent blockers keeping you from interviews.
             </p>
 
             {/*  5 Dimensions List  */}

@@ -1,11 +1,11 @@
-# Career GPS™ — AI Career Operating System
+# Career GPS — AI Career Operating System
 
 [![React 19](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-7.3-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
 [![Design](https://img.shields.io/badge/Design_Theme-Referso_SaaS-8B5CF6?style=flat-square)](./docs/design.md)
 [![SEO](https://img.shields.io/badge/SEO_Schemas-JSON--LD-10B981?style=flat-square)](./docs/seo-and-geo.md)
 
-Career GPS™ is an AI-powered Career Operating System engineered to help U.S. professionals bypass candidate friction, automate ATS-optimized job applications, scale recruiter outreach, and land senior tech roles faster.
+Career GPS is an AI-powered Career Operating System engineered to help U.S. professionals bypass candidate friction, automate ATS-optimized job applications, scale recruiter outreach, and land senior tech roles faster.
 
 ---
 
@@ -13,19 +13,20 @@ Career GPS™ is an AI-powered Career Operating System engineered to help U.S. p
 
 Complete, easy-to-understand manuals are organized in the [`docs/`](./docs) folder:
 
-| Document | Description |
-| :--- | :--- |
-| 🎨 **[`docs/design.md`](./docs/design.md)** | Complete Referso-inspired design manual, color tokens, typography scales, glassmorphism specs, and WCAG AA guidelines. |
-| 🏗️ **[`docs/architecture.md`](./docs/architecture.md)** | Pure React 19 component tree, hook lifecycle (`useState`, `useEffect`, `useRef`), and state flow. |
-| 🔍 **[`docs/seo-and-geo.md`](./docs/seo-and-geo.md)** | Complete Google Rich Snippets & AI Search (GEO) schemas (`SoftwareApplication`, `Organization`, `FAQPage`). |
-| 🧩 **[`docs/components-guide.md`](./docs/components-guide.md)** | Developer catalog for all 14 modular React components in `src/components/`. |
-| ⚡ **[`docs/skill.md`](./docs/skill.md)** | Antigravity design-system skill specification for UI tokens and quality gates. |
+| Document                                                        | Description                                                                                                            |
+| :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
+| 🎨 **[`docs/design.md`](./docs/design.md)**                     | Complete Referso-inspired design manual, color tokens, typography scales, glassmorphism specs, and WCAG AA guidelines. |
+| 🏗️ **[`docs/architecture.md`](./docs/architecture.md)**         | Pure React 19 component tree, hook lifecycle (`useState`, `useEffect`, `useRef`), and state flow.                      |
+| 🔍 **[`docs/seo-and-geo.md`](./docs/seo-and-geo.md)**           | Complete Google Rich Snippets & AI Search (GEO) schemas (`SoftwareApplication`, `Organization`, `FAQPage`).            |
+| 🧩 **[`docs/components-guide.md`](./docs/components-guide.md)** | Developer catalog for all 14 modular React components in `src/components/`.                                            |
+| ⚡ **[`docs/skill.md`](./docs/skill.md)**                       | Antigravity design-system skill specification for UI tokens and quality gates.                                         |
 
 ---
 
 ## 🚀 Quick Start & Development
 
 ### 1. Install Dependencies
+
 ```bash
 npm install
 # or using bun
@@ -33,18 +34,22 @@ bun install
 ```
 
 ### 2. Start Local Development Server
+
 ```bash
 npm run dev
 # or using bun
 bun dev
 ```
+
 The application will launch with instant Hot Module Replacement (HMR) at:
 👉 **`http://localhost:3000/`** (or your local Vite/Bun port).
 
 ### 3. Production Build
+
 ```bash
 npm run build
 ```
+
 Compiles and tree-shakes all React modules into the optimized `dist/` directory with zero errors.
 
 ---
@@ -88,4 +93,5 @@ src/
 ---
 
 ## 🔒 License & Brand
+
 Copyright © Career GPS Inc. All rights reserved. Built with modern web standards and Referso-inspired SaaS visual architecture.

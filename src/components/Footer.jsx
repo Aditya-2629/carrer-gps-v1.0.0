@@ -8,7 +8,7 @@ export default function Footer() {
       
       <div className="footer-brand">
         <img src={brandLogo} alt="Career GPS Logo" className="footer-logo-img" width="28" height="28" />
-        <span className="footer-title">CAREER <span className="brand-accent">GPS™</span></span>
+        <span className="footer-title">CAREER <span className="brand-accent">GPS</span></span>
       </div>
 
       <nav aria-label="Footer Navigation" className="footer-nav">

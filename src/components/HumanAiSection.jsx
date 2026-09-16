@@ -101,7 +101,7 @@ export default function HumanAiSection() {
         <div className="comparison-matrix-block">
           <div className="matrix-header text-center">
             <div className="badge badge-emerald">Why Different</div>
-            <h3 className="matrix-title">Why Career GPS™ is different</h3>
+            <h3 className="matrix-title">Why Career GPS is different</h3>
             <p className="matrix-subtitle">More than a course. More than a consultancy. More than just AI.</p>
           </div>
 
@@ -109,7 +109,7 @@ export default function HumanAiSection() {
             <div className="table-header-row">
               <div className="col-typical">Typical Solution</div>
               <div className="col-limitation">The Limitation</div>
-              <div className="col-gps text-emerald">Career GPS™</div>
+              <div className="col-gps text-emerald">Career GPS</div>
             </div>
 
             <div className="table-body-row">

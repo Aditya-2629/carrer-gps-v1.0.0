@@ -11,7 +11,7 @@ export default function BentoFeatures() {
             One cohesive system <span className="gradient-text">instead of 10 disconnected tools.</span>
           </h2>
           <p className="section-subtext">
-            Stop paying for separate resume builders, ATS scanners, tracking sheets, and outreach bots. Career GPS™ unites every single component into one unified operating system.
+            Stop paying for separate resume builders, ATS scanners, tracking sheets, and outreach bots. Career GPS unites every single component into one unified operating system.
           </p>
         </div>
 

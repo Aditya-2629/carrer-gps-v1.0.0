@@ -1,4 +1,4 @@
-# Career GPS™ — System Architecture & Engineering Manual
+# Career GPS — System Architecture & Engineering Manual
 
 > **Stack:** React 19 · Vite 7 · Vanilla CSS Design System · Pure React Hooks  
 > **Philosophy:** Zero legacy DOM dependencies, maximum performance, modular components.
@@ -50,7 +50,7 @@ referso clone/
 graph TD
     Root[index.html] --> Main[src/main.jsx]
     Main --> App[src/App.jsx]
-    
+
     App --> Ambient[Ambient Background Gradients]
     App --> Nav[Navbar.jsx]
     App --> Hero[Hero.jsx]
@@ -75,11 +75,13 @@ graph TD
 Every interactive widget operates natively with React hooks without touching global `document.querySelector` or external scripts:
 
 ### 3.1 Live Terminal Agent Logger ([`CockpitPreview.jsx`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/src/components/CockpitPreview.jsx))
+
 - **State:** `logs` array initialized with initial system events.
 - **Hook:** `useEffect` with an interval running every 2.4s. It simulates incoming real-time job scraping and ATS tailoring messages from the 8 autonomous agents.
 - **Performance:** Automatically caps array size to prevent memory bloat, scrolling dynamically within the terminal window.
 
 ### 3.2 Dynamic Rotating Keyword Cycler ([`Hero.jsx`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/src/components/Hero.jsx))
+
 - **State:** `currentKeywordIndex` (`0` to `3`).
 - **Hook:** `useEffect` cycles through keywords every 2.8s:
   1. `prep interviews`
@@ -89,6 +91,7 @@ Every interactive widget operates natively with React hooks without touching glo
 - **Animation:** CSS transition fades out and slides in each keyword smoothly.
 
 ### 3.3 Draggable Before/After Physics ([`ComparisonSlider.jsx`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/src/components/ComparisonSlider.jsx))
+
 - **State:** `sliderPos` (`50` default percentage) and `isDragging` boolean.
 - **Ref:** `sliderRef` attaches directly to the container DOM element.
 - **Listeners:**
@@ -97,6 +100,7 @@ Every interactive widget operates natively with React hooks without touching glo
 - **Visuals:** Dynamically binds `left: ${sliderPos}%` to the handle and `width: ${sliderPos}%` to the overlay clip container.
 
 ### 3.4 Dynamic Pricing Calculator ([`PricingSection.jsx`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/src/components/PricingSection.jsx))
+
 - **State:** `isAnnual` boolean.
 - **Behavior:**
   - When `isAnnual` is `true`:
@@ -107,11 +111,13 @@ Every interactive widget operates natively with React hooks without touching glo
 - **Accessibility:** Toggle switch uses `<button role="switch" aria-checked={isAnnual}>`.
 
 ### 3.5 Expandable FAQ Accordion ([`FaqSection.jsx`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/src/components/FaqSection.jsx))
+
 - **State:** `activeIndex` (number or `null`).
 - **Behavior:** Clicking an FAQ question expands its detailed answer with smooth CSS `grid-template-rows` transition while toggling previous panels.
 - **Accessibility:** Fully supports `aria-expanded` and keyboard navigation via Space / Enter.
 
 ### 3.6 Floating Navbar & Scroll Spy ([`Navbar.jsx`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/src/components/Navbar.jsx))
+
 - **State:** `isScrolled` boolean and `mobileMenuOpen` boolean.
 - **Hook:** Passive `window.addEventListener('scroll')` adds `.scrolled` glass shadow once user scrolls past 30px.
 - **Mobile Menu:** Renders an animated backdrop drawer when screen width drops below 768px.

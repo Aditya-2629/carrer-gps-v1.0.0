@@ -33,7 +33,7 @@ export default function Navbar() {
       <div className="container nav-container">
         <a href="#hero" className="brand-logo" aria-label="Career GPS Home" onClick={() => setIsDrawerOpen(false)}>
           <img src={brandLogo} alt="Career GPS Logo" className="brand-logo-img" width="36" height="36" />
-          <span className="brand-name">Career <span className="brand-accent">GPS™</span></span>
+          <span className="brand-name">Career <span className="brand-accent">GPS</span></span>
         </a>
 
         {/* Desktop Navigation Links */}

@@ -14,7 +14,7 @@ export default function ProblemSection() {
             Why most job seekers <span className="text-crimson">never get enough interviews.</span>
           </h2>
           <p className="section-subtext">
-            Most candidates don't fail because they lack skills. They fail because their job search system is broken. Career GPS™ automates the pipeline so you never reset.
+            Most candidates don't fail because they lack skills. They fail because their job search system is broken. Career GPS automates the pipeline so you never reset.
           </p>
         </div>
 

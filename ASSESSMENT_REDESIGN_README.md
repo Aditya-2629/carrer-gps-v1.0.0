@@ -1,4 +1,4 @@
-# Career GPS™ Assessment — Theme Redesign Implementation Guide
+# Career GPS Assessment — Theme Redesign Implementation Guide
 
 > **Target Project:** [Career GPS Assessment App (`carrer-gps-asess.onrender.com`)](https://carrer-gps-asess.onrender.com/)  
 > **Goal:** Redesign the assessment site to match the Referso-inspired modern SaaS visual theme (Electric Indigo, Vivid Violet, Neon Growth Emerald, Poppins & Plus Jakarta Sans typography, and sleek glassmorphism).
@@ -6,6 +6,7 @@
 ---
 
 ## 📋 Table of Contents
+
 1. [Overview & Visual Identity](#1-overview--visual-identity)
 2. [Step 1: Update `index.html` (Fonts & Metadata)](#step-1-update-indexhtml-fonts--metadata)
 3. [Step 2: Replace Styling Tokens in `index.css`](#step-2-replace-styling-tokens-in-indexcss)
@@ -25,15 +26,16 @@
 ## 1. Overview & Visual Identity
 
 ### The Color Palette
-| Token | Value | Visual Purpose |
-| :--- | :--- | :--- |
-| **Canvas Background** | `#08090D` (Obsidian) or `#F8FAFC` (Luminous) | Deep space cosmic background |
-| **Glass Surface** | `rgba(15, 17, 26, 0.75)` / `#FFFFFF` | Form cards, question cards, option containers |
-| **Primary Brand Accent** | `#6366F1` (Electric Indigo) | Primary CTA buttons, focus rings, progress bar |
-| **Secondary Accent** | `#7C3AED` / `#8B5CF6` (Vivid Violet) | Gradient fills, active pills, badge borders |
-| **Growth Emerald** | `#10B981` (Neon Growth Green) | Success badges, match scores, verified checkmarks |
-| **Information Sky** | `#38BDF8` (Sky Blue) | Secondary counters, informational hints |
-| **Warning / Cost Alert** | `#F43F5E` (Crimson Rose) | Blockers, errors, validation messages |
+
+| Token                    | Value                                        | Visual Purpose                                    |
+| :----------------------- | :------------------------------------------- | :------------------------------------------------ |
+| **Canvas Background**    | `#08090D` (Obsidian) or `#F8FAFC` (Luminous) | Deep space cosmic background                      |
+| **Glass Surface**        | `rgba(15, 17, 26, 0.75)` / `#FFFFFF`         | Form cards, question cards, option containers     |
+| **Primary Brand Accent** | `#6366F1` (Electric Indigo)                  | Primary CTA buttons, focus rings, progress bar    |
+| **Secondary Accent**     | `#7C3AED` / `#8B5CF6` (Vivid Violet)         | Gradient fills, active pills, badge borders       |
+| **Growth Emerald**       | `#10B981` (Neon Growth Green)                | Success badges, match scores, verified checkmarks |
+| **Information Sky**      | `#38BDF8` (Sky Blue)                         | Secondary counters, informational hints           |
+| **Warning / Cost Alert** | `#F43F5E` (Crimson Rose)                     | Blockers, errors, validation messages             |
 
 ---
 
@@ -47,15 +49,24 @@ Open `index.html` in the assessment project. Replace the existing fonts (`Space 
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/jpeg" href="/crafture-logo.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5"
+    />
     <meta name="theme-color" content="#6366F1" />
-    <title>Career GPS™ | Career Health & ATS Assessment</title>
-    <meta name="description" content="Discover your personalized roadmap, ATS compliance score, and salary benchmarks with Career GPS™ Assessment." />
+    <title>Career GPS | Career Health & ATS Assessment</title>
+    <meta
+      name="description"
+      content="Discover your personalized roadmap, ATS compliance score, and salary benchmarks with Career GPS Assessment."
+    />
 
     <!-- Google Fonts: Poppins (Headings) + Plus Jakarta Sans (Body & Form Options) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>
@@ -74,21 +85,21 @@ In your assessment project (`src/index.css` or `src/App.css`), add Tailwind v4 t
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6366F1;
-  --color-primary-dark: #4F46E5;
-  --color-primary-accent: #7C3AED;
-  --color-emerald: #10B981;
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
+  --color-primary-accent: #7c3aed;
+  --color-emerald: #10b981;
   --color-emerald-dark: #059669;
-  --color-canvas: #08090D;
+  --color-canvas: #08090d;
   --color-surface: rgba(15, 17, 26, 0.75);
-  --font-head: 'Poppins', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'Fira Code', monospace;
+  --font-head: "Poppins", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "Fira Code", monospace;
 }
 
 :root {
   /* Canvas & Cards */
-  --bg: #08090D;
+  --bg: #08090d;
   --surface-01: rgba(255, 255, 255, 0.04);
   --surface-02: rgba(255, 255, 255, 0.08);
   --surface-card: rgba(15, 17, 26, 0.75);
@@ -97,20 +108,25 @@ In your assessment project (`src/index.css` or `src/App.css`), add Tailwind v4 t
   --border-active: rgba(139, 92, 246, 0.6);
 
   /* Accents */
-  --primary: #6366F1;
-  --primary-gradient: linear-gradient(135deg, #6366F1 0%, #7C3AED 50%, #9333EA 100%);
-  --emerald: #10B981;
+  --primary: #6366f1;
+  --primary-gradient: linear-gradient(
+    135deg,
+    #6366f1 0%,
+    #7c3aed 50%,
+    #9333ea 100%
+  );
+  --emerald: #10b981;
   --emerald-dim: #059669;
   --emerald-glow: rgba(16, 185, 129, 0.25);
-  --error: #F43F5E;
+  --error: #f43f5e;
   --error-dim: rgba(244, 63, 94, 0.12);
-  --warning: #F59E0B;
-  --sky: #38BDF8;
+  --warning: #f59e0b;
+  --sky: #38bdf8;
 
   /* Typography */
-  --font-head: 'Poppins', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'Fira Code', monospace;
+  --font-head: "Poppins", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "Fira Code", monospace;
 
   /* Radii & Shadows */
   --r-sm: 8px;
@@ -123,13 +139,16 @@ In your assessment project (`src/index.css` or `src/App.css`), add Tailwind v4 t
 
 body {
   background-color: var(--bg);
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-head);
   letter-spacing: -0.025em;
 }
@@ -142,11 +161,12 @@ h1, h2, h3, h4 {
 Paste these upgraded classes directly into your assessment project's stylesheet to replace the old flat styles:
 
 ### 3.1 Buttons (`.btn-primary` & `.btn-ghost`)
+
 ```css
 /* High-Energy Shimmer Button */
 .btn-primary {
   background: var(--primary-gradient);
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: var(--font-head);
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -182,7 +202,7 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 
 /* Secondary / Ghost Button */
 .btn-ghost {
-  color: #94A3B8;
+  color: #94a3b8;
   font-family: var(--font-body);
   font-weight: 600;
   border: 1px solid var(--border);
@@ -199,12 +219,13 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 
 .btn-ghost:hover {
   background: var(--surface-02);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--border-hover);
 }
 ```
 
 ### 3.2 Radio Options (`.radio-option` & `.radio-dot`)
+
 ```css
 .radio-option {
   background: rgba(255, 255, 255, 0.03);
@@ -249,15 +270,16 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 }
 
 .radio-dot-inner {
-  background: linear-gradient(135deg, #6366F1, #7C3AED);
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
   border-radius: 50%;
   width: 10px;
   height: 10px;
-  box-shadow: 0 0 8px #6366F1;
+  box-shadow: 0 0 8px #6366f1;
 }
 ```
 
 ### 3.3 Checkbox Options (`.checkbox-option` & `.checkbox-box`)
+
 ```css
 .checkbox-option {
   background: rgba(255, 255, 255, 0.03);
@@ -301,17 +323,18 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 .checkbox-option.selected .checkbox-box {
   background: var(--emerald);
   border-color: var(--emerald);
-  box-shadow: 0 0 8px #10B981;
+  box-shadow: 0 0 8px #10b981;
 }
 ```
 
 ### 3.4 Inputs & OTP Code Boxes (`.premium-input` & `.otp-input`)
+
 ```css
 .premium-input {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 14px 18px;
@@ -321,7 +344,7 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 }
 
 .premium-input::placeholder {
-  color: #64748B;
+  color: #64748b;
 }
 
 .premium-input:focus {
@@ -336,7 +359,7 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
   text-align: center;
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  color: #FFFFFF;
+  color: #ffffff;
   width: clamp(44px, 14vw, 56px);
   height: clamp(52px, 16vw, 64px);
   font-size: 1.5rem;
@@ -356,11 +379,12 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 .otp-input.filled {
   border-color: var(--emerald);
   background: rgba(16, 185, 129, 0.08);
-  color: #10B981;
+  color: #10b981;
 }
 ```
 
 ### 3.5 Resume File Drop Zone (`.file-drop`)
+
 ```css
 .file-drop {
   border: 2px dashed rgba(99, 102, 241, 0.35);
@@ -373,7 +397,8 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
   backdrop-filter: blur(16px);
 }
 
-.file-drop:hover, .file-drop.drag-over {
+.file-drop:hover,
+.file-drop.drag-over {
   border-color: var(--primary);
   background: rgba(99, 102, 241, 0.1);
   box-shadow: 0 0 32px rgba(99, 102, 241, 0.25);
@@ -388,6 +413,7 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 ```
 
 ### 3.6 Progress Track & Timeline (`.progress-fill` & `.timeline-line`)
+
 ```css
 .progress-track {
   background: rgba(255, 255, 255, 0.08);
@@ -397,7 +423,7 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 }
 
 .progress-fill {
-  background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #10B981 100%);
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #10b981 100%);
   height: 100%;
   border-radius: 9999px;
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -405,7 +431,7 @@ Paste these upgraded classes directly into your assessment project's stylesheet 
 }
 
 .timeline-line {
-  background: linear-gradient(180deg, #6366F1 0%, #10B981 100%);
+  background: linear-gradient(180deg, #6366f1 0%, #10b981 100%);
   width: 2px;
   position: absolute;
   top: 42px;
@@ -442,16 +468,21 @@ In `src/App.jsx` (or your top-level layout component), wrap your views with the 
 
 1. Copy [`crafture-logo.jpg`](file:///c:/Users/hp/Desktop/ADITYA/exp/referso%20clone/crafture-logo.jpg) into the assessment app's `src/assets/images/crafture-logo.jpg` and `public/crafture-logo.jpg`.
 2. In the header bar of the assessment:
+
 ```jsx
-import brandLogo from './assets/images/crafture-logo.jpg';
+import brandLogo from "./assets/images/crafture-logo.jpg";
 
 export function AssessmentHeader() {
   return (
     <header className="flex items-center justify-between py-6 mb-8 border-b border-white/10">
       <div className="flex items-center gap-3">
-        <img src={brandLogo} alt="Career GPS" className="w-9 h-9 rounded-lg shadow-md" />
+        <img
+          src={brandLogo}
+          alt="Career GPS"
+          className="w-9 h-9 rounded-lg shadow-md"
+        />
         <span className="font-['Poppins'] font-bold text-lg text-white">
-          Career <span className="text-[#6366F1]">GPS™</span>
+          Career <span className="text-[#6366F1]">GPS</span>
         </span>
       </div>
       <div className="text-xs font-semibold uppercase tracking-wider text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/30 px-3 py-1 rounded-full">
