@@ -16,12 +16,6 @@ export default function PricingSection() {
       aiPrice: '135',
       aiSub: 'Billed every 3 months ($405) — save $45',
     },
-    biannual: {
-      elitePrice: '240',
-      eliteSub: 'Billed every 6 months ($1,440) — save $360',
-      aiPrice: '120',
-      aiSub: 'Billed every 6 months ($720) — save $180',
-    },
   };
 
   const currentPricing = pricingData[billingCycle];
@@ -58,15 +52,6 @@ export default function PricingSection() {
               onClick={() => setBillingCycle('quarterly')}
             >
               3 Months <span className="badge-save">Save 10%</span>
-            </button>
-            <button 
-              className={`toggle-option ${billingCycle === 'biannual' ? 'active' : ''}`}
-              id="billingBiannualBtn" 
-              role="radio" 
-              aria-checked={billingCycle === 'biannual'}
-              onClick={() => setBillingCycle('biannual')}
-            >
-              6 Months <span className="badge-save">Save 20%</span>
             </button>
           </div>
         </div>
@@ -130,7 +115,7 @@ export default function PricingSection() {
 
             <ul className="plan-features-list">
               <li><span className="check-emerald">✓</span> Everything in Career GPS AI</li>
-              <li><span className="check-emerald">✓</span> Up to 100 applications / day</li>
+              <li><span className="check-emerald">✓</span> Personalized 100 applications / day</li>
               <li><span className="check-emerald">✓</span> Dedicated US Human Consultant</li>
               <li><span className="check-emerald">✓</span> Expert ATS Resume Rewrite</li>
               <li><span className="check-emerald">✓</span> LinkedIn Positioning Audit</li>
