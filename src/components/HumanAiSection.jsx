@@ -125,7 +125,7 @@ export default function HumanAiSection() {
             </div>
 
             <div className="table-body-row">
-              <div className="col-typical font-bold">AI Tools (ChatGPT)</div>
+              <div className="col-typical font-bold">AI Tools</div>
               <div className="col-limitation">Generic — hours of daily prompting and copy-pasting</div>
               <div className="col-gps text-emerald"><span>✓</span> Managed AI agents: purpose-built, fully configured</div>
             </div>

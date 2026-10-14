@@ -3956,6 +3956,69 @@ img, svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.review-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.google-badge-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+}
+
+.google-review-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.2s ease;
+}
+
+.google-review-link:hover {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.review-likes-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #E11D48;
+  background: rgba(225, 29, 72, 0.08);
+  padding: 1px 7px;
+  border-radius: 9999px;
+  border: 1px solid rgba(225, 29, 72, 0.2);
+}
+
+.hover-underline {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hover-underline:hover {
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 .testimonial-stars {
