@@ -69,7 +69,7 @@ export default function HumanAiSection() {
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
               <div className="callout-text">
-                <div className="callout-primary">Up to 100 <span className="callout-label">AI applications per day</span></div>
+                <div className="callout-primary">100 / Day <span className="callout-label">AI + Human Targeted Job Applications</span></div>
                 <p className="callout-sub">Precision-targeted. 85%+ match threshold enforced.</p>
               </div>
             </div>
