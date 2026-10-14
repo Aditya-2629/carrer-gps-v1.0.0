@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
+import CompanyMarquee from './components/CompanyMarquee.jsx';
 import CockpitPreview from './components/CockpitPreview.jsx';
 import ProblemSection from './components/ProblemSection.jsx';
 import DiagnosticSection from './components/DiagnosticSection.jsx';
@@ -31,17 +32,43 @@ export default function App() {
         <Navbar />
 
         <main role="main">
+          {/* Hero Section with Fluid Aurora Canvas & Recruiter Quote Card */}
           <Hero />
+
+          {/* Trusted by job seekers at top companies (Moving Marquee) */}
+          <CompanyMarquee />
+
+          {/* Live Interactive Cockpit Preview */}
           <CockpitPreview />
+
+          {/* Problem Section: Why traditional job hunts fail */}
           <ProblemSection />
+
+          {/* Career GPS Diagnostic Tool */}
           <DiagnosticSection />
+
+          {/* Unified Platform Bento Grid */}
           <BentoFeatures />
+
+          {/* Preserved Comparison Slider (Untouched as requested) */}
           <ComparisonSlider />
+
+          {/* AI Speed + US Human Coaching Synergy */}
           <HumanAiSection />
+
+          {/* Pricing with 'See all features' Collapsible Dropdown */}
           <PricingSection />
+
+          {/* Process Timeline */}
           <ProcessTimeline />
+
+          {/* Hear From Our Community (Auto-Slider + Community Network) */}
           <CommunitySection />
+
+          {/* FAQ Section */}
           <FaqSection />
+
+          {/* Final Call to Action */}
           <FinalCta />
         </main>
 

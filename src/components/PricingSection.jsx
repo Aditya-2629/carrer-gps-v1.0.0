@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 
 export default function PricingSection() {
   const [billingCycle, setBillingCycle] = useState('monthly');
+  // State to track expanded 'See all features' for each card
+  const [expandedPlans, setExpandedPlans] = useState({
+    starter: false,
+    elite: false,
+    ai: false,
+  });
+
+  const toggleExpand = (planKey) => {
+    setExpandedPlans(prev => ({
+      ...prev,
+      [planKey]: !prev[planKey]
+    }));
+  };
 
   const pricingData = {
     monthly: {
@@ -20,6 +33,51 @@ export default function PricingSection() {
 
   const currentPricing = pricingData[billingCycle];
 
+  const starterCore = [
+    'Career Health Report',
+    'Career GPS Score',
+    'Which phase of the job hunt the candidate is currently in',
+    'Primary bottleneck identification'
+  ];
+
+  const starterExtended = [
+    'What needs to be changed in your materials',
+    'How to change it with actionable steps',
+    'Personalized job-search strategies & tips',
+    'Tailored 30/60/90-Day Execution Plan',
+    'Free 1-on-1 Career Coach diagnostic call'
+  ];
+
+  const eliteCore = [
+    'Everything in Career GPS AI',
+    'Personalized 100 applications / day',
+    'Dedicated US Human Recruitment Consultant',
+    'Expert ATS Resume Rewrite by Senior Coach'
+  ];
+
+  const eliteExtended = [
+    'LinkedIn Positioning & SEO Audit',
+    'Weekly 1-on-1 Live Interview Coaching',
+    'Offer & Salary Negotiation Support with Live Scripts',
+    'Priority Support Queue with Direct WhatsApp/Slack',
+    'Weekly Industry Expert Sessions & Hot Leads'
+  ];
+
+  const aiCore = [
+    'Everything in Starter Plan',
+    'Full AI Job Search Team (8 autonomous agents)',
+    'Up to 50 applications / day across US portals',
+    'Automated recruiter cold outreach sequences'
+  ];
+
+  const aiExtended = [
+    'Live Campaign Dashboard & Recruiter Analytics',
+    'Continuous Resume & LinkedIn Keyword SEO',
+    'Automated Multi-Stage Follow-Up Sequences',
+    'Real-time Salary Intelligence & Market Feed',
+    'Weekly Industry Expert Sessions'
+  ];
+
   return (
     <section className="section pricing-section" id="pricing" aria-labelledby="pricing-heading">
       <div className="container">
@@ -32,7 +90,7 @@ export default function PricingSection() {
           <p className="section-subtext">No hidden fees. Flexible options. Cancel anytime.</p>
         </div>
 
-        {/*  Billing Cycle Toggle (Referso Pattern)  */}
+        {/* Billing Cycle Toggle (Referso Pattern) */}
         <div className="billing-toggle-wrap">
           <div className="toggle-pill-container" role="radiogroup" aria-label="Billing frequency">
             <button 
@@ -56,10 +114,10 @@ export default function PricingSection() {
           </div>
         </div>
 
-        {/*  Pricing Cards Grid  */}
+        {/* Pricing Cards Grid */}
         <div className="pricing-cards-grid">
           
-          {/*  Plan 1: Starter (Free)  */}
+          {/* Plan 1: Starter (Free) */}
           <div className="pricing-card glass-panel">
             <div className="card-plan-header">
               <span className="plan-label">Starter</span>
@@ -71,19 +129,49 @@ export default function PricingSection() {
 
             <div className="plan-divider"></div>
 
+            {/* Core Features */}
             <ul className="plan-features-list">
-              <li><span className="check-emerald">✓</span> Career Health Report </li>
-              <li><span className="check-emerald">✓</span> Career GPS Score </li>
-              <li><span className="check-emerald">✓</span> Which phase of the job hunt the candidate is currently in </li>
-              <li><span className="check-emerald">✓</span> Primary bottleneck </li>
-              <li><span className="check-emerald">✓</span> What needs to be changed </li>
-              <li><span className="check-emerald">✓</span> How to change it </li>
-              <li><span className="check-emerald">✓</span> Personalized job-search strategies & tips </li>
-              <li><span className="check-emerald">✓</span> Which phase of the job hunt the candidate is currently in </li>
-              <li><span className="check-emerald">✓</span> 30/60/90-Day Plan </li>
-              <li><span className="check-emerald">✓</span> Free Career Coach call </li>
-              
+              {starterCore.map((feature, i) => (
+                <li key={i}>
+                  <span className="check-emerald">✓</span> {feature}
+                </li>
+              ))}
             </ul>
+
+            {/* Collapsible Extended Features with Dropdown */}
+            <div className={`pricing-features-accordion ${expandedPlans.starter ? 'is-open' : ''}`}>
+              <ul className="plan-features-list accordion-list">
+                {starterExtended.map((feature, i) => (
+                  <li key={i}>
+                    <span className="check-emerald">✓</span> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Dropdown Toggle Button */}
+            <button 
+              type="button"
+              className={`pricing-dropdown-toggle ${expandedPlans.starter ? 'active' : ''}`}
+              onClick={() => toggleExpand('starter')}
+              aria-expanded={expandedPlans.starter}
+            >
+              <span>{expandedPlans.starter ? 'See less features' : 'See all features'}</span>
+              <svg 
+                className={`chevron-icon ${expandedPlans.starter ? 'rotated' : ''}`} 
+                width="16" 
+                height="16" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
 
             <div className="plan-action">
               <a href="https://carrer-gps-asess.onrender.com/" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-block">
@@ -92,7 +180,7 @@ export default function PricingSection() {
             </div>
           </div>
 
-          {/*  Plan 2: Elite · AI + Human (Most Popular)  */}
+          {/* Plan 2: Elite · AI + Human (Most Popular) */}
           <div className="pricing-card pricing-card-featured glass-panel">
             <div className="featured-badge">Most Popular</div>
             
@@ -113,17 +201,49 @@ export default function PricingSection() {
 
             <div className="plan-divider"></div>
 
+            {/* Core Features */}
             <ul className="plan-features-list">
-              <li><span className="check-emerald">✓</span> Everything in Career GPS AI</li>
-              <li><span className="check-emerald">✓</span> Personalized 100 applications / day</li>
-              <li><span className="check-emerald">✓</span> Dedicated US Human Consultant</li>
-              <li><span className="check-emerald">✓</span> Expert ATS Resume Rewrite</li>
-              <li><span className="check-emerald">✓</span> LinkedIn Positioning Audit</li>
-              <li><span className="check-emerald">✓</span> Weekly 1-on-1 Interview Coaching</li>
-              <li><span className="check-emerald">✓</span> Offer & Salary Negotiation Support</li>
-              <li><span className="check-emerald">✓</span> Priority support queue</li>
-              <li><span className="check-emerald">✓</span> Weekly Industry Expert Sessions</li>
+              {eliteCore.map((feature, i) => (
+                <li key={i}>
+                  <span className="check-emerald">✓</span> {feature}
+                </li>
+              ))}
             </ul>
+
+            {/* Collapsible Extended Features with Dropdown */}
+            <div className={`pricing-features-accordion ${expandedPlans.elite ? 'is-open' : ''}`}>
+              <ul className="plan-features-list accordion-list">
+                {eliteExtended.map((feature, i) => (
+                  <li key={i}>
+                    <span className="check-emerald">✓</span> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Dropdown Toggle Button */}
+            <button 
+              type="button"
+              className={`pricing-dropdown-toggle ${expandedPlans.elite ? 'active' : ''}`}
+              onClick={() => toggleExpand('elite')}
+              aria-expanded={expandedPlans.elite}
+            >
+              <span>{expandedPlans.elite ? 'See less features' : 'See all features'}</span>
+              <svg 
+                className={`chevron-icon ${expandedPlans.elite ? 'rotated' : ''}`} 
+                width="16" 
+                height="16" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
 
             <div className="plan-action">
               <a href="https://superprofile.bio/vp/6a46baf515e3cc0013660b1e" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-block btn-shimmer">
@@ -132,7 +252,7 @@ export default function PricingSection() {
             </div>
           </div>
 
-          {/*  Plan 3: Career GPS AI (Coming Soon)  */}
+          {/* Plan 3: Career GPS AI (Coming Soon) */}
           <div className="pricing-card glass-panel">
             <div className="coming-soon-badge">Coming Soon</div>
 
@@ -153,17 +273,49 @@ export default function PricingSection() {
 
             <div className="plan-divider"></div>
 
+            {/* Core Features */}
             <ul className="plan-features-list">
-              <li><span className="check-emerald">✓</span> Everything in Starter</li>
-              <li><span className="check-emerald">✓</span> Full AI Job Search Team (8 agents)</li>
-              <li><span className="check-emerald">✓</span> Up to 50 applications / day</li>
-              <li><span className="check-emerald">✓</span> Automated recruiter cold outreach</li>
-              <li><span className="check-emerald">✓</span> Campaign dashboard & analytics</li>
-              <li><span className="check-emerald">✓</span> Continuous resume & LinkedIn SEO</li>
-              <li><span className="check-emerald">✓</span> Automated follow-up sequences</li>
-              <li><span className="check-emerald">✓</span> Salary intelligence feed</li>
-              <li><span className="check-emerald">✓</span> Weekly Industry Expert Sessions</li>
+              {aiCore.map((feature, i) => (
+                <li key={i}>
+                  <span className="check-emerald">✓</span> {feature}
+                </li>
+              ))}
             </ul>
+
+            {/* Collapsible Extended Features with Dropdown */}
+            <div className={`pricing-features-accordion ${expandedPlans.ai ? 'is-open' : ''}`}>
+              <ul className="plan-features-list accordion-list">
+                {aiExtended.map((feature, i) => (
+                  <li key={i}>
+                    <span className="check-emerald">✓</span> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Dropdown Toggle Button */}
+            <button 
+              type="button"
+              className={`pricing-dropdown-toggle ${expandedPlans.ai ? 'active' : ''}`}
+              onClick={() => toggleExpand('ai')}
+              aria-expanded={expandedPlans.ai}
+            >
+              <span>{expandedPlans.ai ? 'See less features' : 'See all features'}</span>
+              <svg 
+                className={`chevron-icon ${expandedPlans.ai ? 'rotated' : ''}`} 
+                width="16" 
+                height="16" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
 
             <div className="plan-action">
               <a href="https://superprofile.bio/vp/6a46b68049a6e500138a886a" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-block">

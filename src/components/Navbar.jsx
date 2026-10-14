@@ -31,9 +31,9 @@ export default function Navbar() {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`} role="banner" id="mainHeader">
       <div className="container nav-container">
-        <a href="#hero" className="brand-logo" aria-label="Career GPS Home" onClick={() => setIsDrawerOpen(false)}>
-          <img src={brandLogo} alt="Career GPS Logo" className="brand-logo-img" width="36" height="36" />
-          <span className="brand-name">Career <span className="brand-accent">GPS</span></span>
+        <a href="#hero" className="brand-logo" aria-label="Crafture Home" onClick={() => setIsDrawerOpen(false)}>
+          <img src={brandLogo} alt="Crafture Logo" className="brand-logo-img" width="36" height="36" />
+          <span className="brand-name">Crafture <span className="brand-accent">GPS</span></span>
         </a>
 
         {/* Desktop Navigation Links */}

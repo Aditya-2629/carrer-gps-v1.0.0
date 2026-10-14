@@ -3572,3 +3572,588 @@ img, svg {
     height: 560px;
   }
 }
+
+/* ==========================================================================
+   CAREERFLOW-INSPIRED LANDING PAGE REDESIGN WITH BASE BRAND COLORS
+   Indigo (#4F46E5 / #6366F1), Violet (#7C3AED / #8B5CF6), Emerald (#10B981)
+   ========================================================================== */
+
+/* 1. Hero Dynamic Gradient Aurora Canvas & Vignette */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.78;
+}
+
+.hero-radial-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 35%, transparent 15%, var(--bg-canvas) 88%);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* 2. Real Job Seeker Social Proof Card with Authentic Avatar Cluster */
+.job-seeker-proof-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 660px;
+  margin: 32px auto 0;
+  padding: 10px 24px 10px 14px;
+  border-radius: 9999px;
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+  animation: proofSubtleFloat 4.5s ease-in-out infinite alternate;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.job-seeker-proof-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.14);
+}
+
+@keyframes proofSubtleFloat {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-4px); }
+}
+
+.job-seeker-avatar-cluster {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.job-seeker-avatars-img {
+  width: 192px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.job-seeker-quote-box {
+  flex: 1;
+  min-width: 0;
+}
+
+.job-seeker-quote-text {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* 3. Company Marquee Section with Real Original Company Logos */
+.companies-marquee-section {
+  padding: 60px 0 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.companies-marquee-section .section-intro {
+  margin-bottom: 30px;
+}
+
+.marquee-outer-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 14px 0;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-fade-overlay-left,
+.marquee-fade-overlay-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.marquee-fade-overlay-left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-canvas), transparent);
+}
+
+.marquee-fade-overlay-right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-canvas), transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: marqueeSlide 36s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeSlide {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Authentic White Logo Badge Pill (Shows real vibrant brand colors in any theme) */
+.marquee-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  padding: 8px 26px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.marquee-logo-badge:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.marquee-real-logo {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* 4. Simplify Features Section with Clean 2D Illustrations (No Gradients) */
+.simplify-features-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.features-eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--primary);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  margin-bottom: 16px;
+}
+
+.simplify-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-top: 50px;
+}
+
+.simplify-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.simplify-feature-row.row-reversed {
+  grid-template-columns: 1.15fr 1fr;
+}
+
+.simplify-feature-row.row-reversed .feature-text-col {
+  order: 2;
+}
+
+.simplify-feature-row.row-reversed .feature-visual-col {
+  order: 1;
+}
+
+.feature-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-tag-wrap {
+  display: flex;
+}
+
+.tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.feature-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.feature-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.feature-cta-wrap {
+  margin-top: 8px;
+}
+
+.feature-visual-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Clean, crisp 2D illustration card (No gradients in image) */
+.feature-illustration-card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 32px -4px rgba(0, 0, 0, 0.10);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  max-width: 580px;
+  width: 100%;
+}
+
+.feature-illustration-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 18px 42px -4px rgba(0, 0, 0, 0.16);
+}
+
+.feature-clean-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* 5. Community Testimonial Auto Slider */
+.community-slider-wrapper {
+  max-width: 920px;
+  margin: 36px auto 70px;
+  position: relative;
+}
+
+.slider-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.slider-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slider-nav-btn:hover {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.slider-dots-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-dot-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--border-medium);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slider-dot-btn.active {
+  width: 30px;
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.testimonial-slide-viewport {
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.testimonial-track {
+  display: flex;
+  width: 100%;
+}
+
+.testimonial-slide-item {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+.testimonial-card-main {
+  padding: 44px 52px;
+  border-radius: 24px;
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.testimonial-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.testimonial-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quote-mark-icon {
+  font-size: 3.5rem;
+  line-height: 0.8;
+  font-family: Georgia, serif;
+  color: var(--primary);
+  opacity: 0.35;
+}
+
+.testimonial-quote-body {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.testimonial-author-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.author-avatar-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.author-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author-name {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.author-subtext {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.author-dot {
+  opacity: 0.5;
+}
+
+.author-company-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--emerald-primary);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.community-sub-features-wrapper {
+  margin-top: 60px;
+}
+
+.community-perks-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+}
+
+/* 6. Pricing Dropdown Accordion */
+.pricing-features-accordion {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin 0.35s ease;
+  margin-top: 0;
+}
+
+.pricing-features-accordion.is-open {
+  max-height: 520px;
+  opacity: 1;
+  margin-top: 8px;
+}
+
+.accordion-list {
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.pricing-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 14px;
+  margin: 14px 0 18px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  color: var(--primary);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pricing-dropdown-toggle:hover {
+  background: rgba(99, 102, 241, 0.16);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.pricing-dropdown-toggle .chevron-icon {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pricing-dropdown-toggle .chevron-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Responsive Overrides for Mobile & Tablets */
+@media (max-width: 991px) {
+  .simplify-feature-row,
+  .simplify-feature-row.row-reversed {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .simplify-feature-row.row-reversed .feature-text-col,
+  .simplify-feature-row.row-reversed .feature-visual-col {
+    order: unset;
+  }
+  .feature-title {
+    font-size: 1.7rem;
+  }
+  .hero-social-proof-card {
+    border-radius: 18px;
+    padding: 16px;
+    flex-direction: column;
+    text-align: center;
+  }
+  .proof-content-wrap {
+    text-align: center;
+  }
+  .proof-meta-sub {
+    justify-content: center;
+  }
+  .testimonial-card-main {
+    padding: 32px 24px;
+  }
+  .testimonial-quote-body {
+    font-size: 1.08rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-social-proof-card {
+    border-radius: 16px;
+    padding: 14px;
+  }
+  .proof-quote-line {
+    font-size: 0.88rem;
+  }
+  .marquee-outer-container {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .feature-title {
+    font-size: 1.45rem;
+  }
+  .slider-controls-bar {
+    gap: 12px;
+  }
+  .testimonial-card-main {
+    padding: 24px 18px;
+  }
+}
